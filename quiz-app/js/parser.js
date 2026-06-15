@@ -141,4 +141,60 @@ const Parser = {
       })
       .join('；');
   },
+
+  questionKey(q) {
+    return `${q.type}::${q.stem.replace(/\s+/g, ' ').trim().toLowerCase()}`;
+  },
+
+  /** 合并多份题库，按题干去重；有答案的版本优先保留 */
+  mergeBanks(banks, title) {
+    if (!banks.length) throw new Error('没有可合并的题库');
+
+    const map = new Map();
+    let mergedFrom = 0;
+
+    banks.forEach((bank) => {
+      mergedFrom += bank.questions?.length || 0;
+      (bank.questions || []).forEach((q) => {
+        const key = this.questionKey(q);
+        const existing = map.get(key);
+        if (!existing) {
+          map.set(key, { ...q });
+          return;
+        }
+        const pick = this.pickBetterQuestion(existing, q);
+        map.set(key, pick);
+      });
+    });
+
+    const questions = [...map.values()].map((q, i) => ({ ...q, id: i + 1 }));
+    const withAnswer = questions.filter((q) => q.answer?.length).length;
+
+    return {
+      title: title || banks[0].title + '（合并版）',
+      source: 'merged',
+      questions,
+      meta: {
+        total: questions.length,
+        withAnswer,
+        mergedFrom,
+        mergedBanks: banks.length,
+        mergedAt: new Date().toISOString(),
+      },
+    };
+  },
+
+  pickBetterQuestion(a, b) {
+    const score = (q) =>
+      (q.answer?.length ? 4 : 0) + (q.analysis ? 2 : 0) + (q.images?.length ? 1 : 0);
+    const better = score(b) > score(a) ? b : a;
+    const other = better === b ? a : b;
+    return {
+      ...better,
+      answer: better.answer?.length ? better.answer : other.answer || [],
+      analysis: better.analysis || other.analysis || '',
+      images: better.images?.length ? better.images : other.images || [],
+      options: better.options?.length ? better.options : other.options || [],
+    };
+  },
 };

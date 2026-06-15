@@ -27,6 +27,7 @@
         <div class="card hero">
           <h2>把考试题变成自己的题库</h2>
           <p>学习通只有考试/作业时才能看到题。用浏览器油猴脚本在答题页导出 JSON，再导入这里就能无限重考。</p>
+          <p class="tip-box">📌 <strong>随机组卷</strong>（每次题不一样）：每次考完都导出 JSON，可一次选多个文件导入自动合并，或点「合并全部题库」去重汇总。</p>
           <ol class="steps">
             <li>安装 <strong>Tampermonkey</strong>（油猴）</li>
             <li>安装项目里的 <code>userscript/chaoxing-export.user.js</code></li>
@@ -34,10 +35,13 @@
             <li>交卷后再打开「查看成绩/答卷」页导出一次（带答案）</li>
             <li>回到本页导入 JSON 文件</li>
           </ol>
-          <label class="import-btn">
-            <input type="file" id="import-file" accept=".json,application/json" hidden />
-            📂 导入 JSON 题库
-          </label>
+          <div class="import-row">
+            <label class="import-btn">
+              <input type="file" id="import-file" accept=".json,application/json" multiple hidden />
+              📂 导入 JSON（可多选合并）
+            </label>
+            <button class="btn ghost" id="btn-merge-all" type="button">🔗 合并全部题库</button>
+          </div>
         </div>
 
         <div class="card">

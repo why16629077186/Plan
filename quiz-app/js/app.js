@@ -316,20 +316,68 @@ function retake() {
   renderAnswerSheet();
 }
 
-function handleImport(file) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const bank = Parser.parseFileContent(reader.result);
-      const id = `bank_${Date.now()}`;
-      Storage.addBank({ ...bank, id });
+function handleImportFiles(fileList) {
+  const files = [...fileList];
+  if (!files.length) return;
+
+  const read = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          resolve(Parser.parseFileContent(reader.result));
+        } catch (e) {
+          reject(new Error(`${file.name}: ${e.message}`));
+        }
+      };
+      reader.onerror = () => reject(new Error(`${file.name}: 读取失败`));
+      reader.readAsText(file, 'UTF-8');
+    });
+
+  Promise.all(files.map(read))
+    .then((banks) => {
+      if (banks.length === 1) {
+        const bank = banks[0];
+        Storage.addBank({ ...bank, id: `bank_${Date.now()}` });
+        renderBanks();
+        alert(`导入成功：${bank.title}（${bank.questions.length} 题，${bank.meta.withAnswer} 题有答案）`);
+        return;
+      }
+
+      const merged = Parser.mergeBanks(banks, banks[0].title + '（合并版）');
+      Storage.addBank({ ...merged, id: `bank_${Date.now()}` });
       renderBanks();
-      alert(`导入成功：${bank.title}（${bank.questions.length} 题，${bank.meta.withAnswer} 题有答案）`);
-    } catch (e) {
-      alert('导入失败：' + e.message);
-    }
-  };
-  reader.readAsText(file, 'UTF-8');
+      const dup = merged.meta.mergedFrom - merged.questions.length;
+      alert(
+        `合并成功：${merged.questions.length} 道不重复题\n` +
+          `（来自 ${banks.length} 个文件共 ${merged.meta.mergedFrom} 道，去重 ${dup} 道）\n` +
+          `其中 ${merged.meta.withAnswer} 道有答案`
+      );
+    })
+    .catch((e) => alert('导入失败：' + e.message));
+}
+
+function mergeAllBanks() {
+  const banks = Storage.loadBanks();
+  if (banks.length < 2) {
+    alert('至少需要 2 套题库才能合并');
+    return;
+  }
+  const title = prompt('合并后的题库名称', banks[0].title + '（合并版）');
+  if (title === null) return;
+
+  const merged = Parser.mergeBanks(banks, title || banks[0].title + '（合并版）');
+  Storage.addBank({ ...merged, id: `bank_${Date.now()}` });
+  renderBanks();
+  const dup = merged.meta.mergedFrom - merged.questions.length;
+  alert(
+    `合并成功：${merged.questions.length} 道不重复题\n` +
+      `（共 ${banks.length} 套、${merged.meta.mergedFrom} 道，去重 ${dup} 道）`
+  );
+}
+
+function handleImport(file) {
+  handleImportFiles([file]);
 }
 
 function exportBank(bankId, format) {
@@ -342,10 +390,11 @@ function exportBank(bankId, format) {
 
 function bindEvents() {
   $('#import-file').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) handleImport(file);
+    if (e.target.files?.length) handleImportFiles(e.target.files);
     e.target.value = '';
   });
+
+  $('#btn-merge-all').addEventListener('click', mergeAllBanks);
 
   $('#bank-list').addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-action]');
