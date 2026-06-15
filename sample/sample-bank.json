@@ -1,0 +1,71 @@
+{
+  "format": "chaoxing-quiz-v1",
+  "title": "示例题库 · 计算机基础",
+  "source": "sample",
+  "exportedAt": "2026-06-15T00:00:00.000Z",
+  "meta": {
+    "total": 5,
+    "withAnswer": 5,
+    "note": "这是示例文件，用于测试刷题软件。真实题库请用油猴脚本从学习通导出。"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "stem": "以下哪个是操作系统？",
+      "options": [
+        { "key": "A", "text": "Word" },
+        { "key": "B", "text": "Windows" },
+        { "key": "C", "text": "Photoshop" },
+        { "key": "D", "text": "Chrome" }
+      ],
+      "answer": ["B"],
+      "analysis": "Windows 是微软开发的操作系统。"
+    },
+    {
+      "id": 2,
+      "type": "multiple",
+      "stem": "下列属于输入设备的有（  ）",
+      "options": [
+        { "key": "A", "text": "键盘" },
+        { "key": "B", "text": "鼠标" },
+        { "key": "C", "text": "显示器" },
+        { "key": "D", "text": "扫描仪" }
+      ],
+      "answer": ["A", "B", "D"],
+      "analysis": "显示器属于输出设备。"
+    },
+    {
+      "id": 3,
+      "type": "judgment",
+      "stem": "CPU 是计算机的核心部件。",
+      "options": [
+        { "key": "A", "text": "正确" },
+        { "key": "B", "text": "错误" }
+      ],
+      "answer": ["A"],
+      "analysis": ""
+    },
+    {
+      "id": 4,
+      "type": "fill",
+      "stem": "二进制数 1010 转换为十进制是 ____。",
+      "options": [],
+      "answer": ["10"],
+      "analysis": "1×8 + 0×4 + 1×2 + 0×1 = 10"
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "stem": "HTTP 默认端口号是？",
+      "options": [
+        { "key": "A", "text": "21" },
+        { "key": "B", "text": "80" },
+        { "key": "C", "text": "443" },
+        { "key": "D", "text": "8080" }
+      ],
+      "answer": ["B"],
+      "analysis": "HTTPS 默认端口是 443。"
+    }
+  ]
+}

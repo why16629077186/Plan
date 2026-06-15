@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学习通刷题 · 本地版</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">📖</span>
+        <h1>学习通刷题</h1>
+        <span class="tag">本地版 · 可重考</span>
+      </div>
+      <nav class="nav" id="main-nav">
+        <button class="nav-btn active" data-view="banks">题库</button>
+        <button class="nav-btn" data-view="practice" id="nav-practice" disabled>刷题</button>
+        <button class="nav-btn" data-view="result" id="nav-result" disabled>成绩</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- 题库管理 -->
+      <section id="view-banks" class="view active">
+        <div class="card hero">
+          <h2>把考试题变成自己的题库</h2>
+          <p>学习通只有考试/作业时才能看到题。用浏览器油猴脚本在答题页导出 JSON，再导入这里就能无限重考。</p>
+          <ol class="steps">
+            <li>安装 <strong>Tampermonkey</strong>（油猴）</li>
+            <li>安装项目里的 <code>userscript/chaoxing-export.user.js</code></li>
+            <li>打开学习通考试/作业页，点右下角「下载 JSON 题库」</li>
+            <li>交卷后再打开「查看成绩/答卷」页导出一次（带答案）</li>
+            <li>回到本页导入 JSON 文件</li>
+          </ol>
+          <label class="import-btn">
+            <input type="file" id="import-file" accept=".json,application/json" hidden />
+            📂 导入 JSON 题库
+          </label>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>我的题库</h3>
+            <span id="bank-count" class="muted">0 套</span>
+          </div>
+          <div id="bank-list" class="bank-list"></div>
+          <p id="bank-empty" class="empty">还没有题库，先导入一个 JSON 文件吧</p>
+        </div>
+      </section>
+
+      <!-- 刷题 -->
+      <section id="view-practice" class="view">
+        <div class="practice-header">
+          <div>
+            <h2 id="practice-title">刷题</h2>
+            <p id="practice-progress" class="muted">第 1 / 10 题</p>
+          </div>
+          <div class="practice-actions">
+            <button class="btn ghost" id="btn-shuffle">🔀 随机顺序</button>
+            <button class="btn ghost" id="btn-exit">返回题库</button>
+          </div>
+        </div>
+
+        <div class="card question-card" id="question-card">
+          <div class="q-meta">
+            <span class="q-type" id="q-type">单选题</span>
+            <span class="q-index" id="q-index">1</span>
+          </div>
+          <div class="q-stem" id="q-stem"></div>
+          <div class="q-images" id="q-images"></div>
+          <div class="q-options" id="q-options"></div>
+          <div class="q-fill hidden" id="q-fill">
+            <input type="text" id="fill-input" placeholder="请输入答案" />
+          </div>
+        </div>
+
+        <div class="practice-footer">
+          <button class="btn ghost" id="btn-prev" disabled>上一题</button>
+          <button class="btn primary" id="btn-next">下一题</button>
+          <button class="btn success hidden" id="btn-submit">交卷</button>
+        </div>
+
+        <div class="card answer-sheet">
+          <h4>答题卡</h4>
+          <div id="answer-sheet" class="sheet-grid"></div>
+        </div>
+      </section>
+
+      <!-- 成绩 -->
+      <section id="view-result" class="view">
+        <div class="card result-card">
+          <div class="score-ring" id="score-ring">
+            <span class="score-num" id="score-num">0</span>
+            <span class="score-label">分</span>
+          </div>
+          <h2 id="result-title">测验完成</h2>
+          <p id="result-summary" class="muted"></p>
+          <div class="result-actions">
+            <button class="btn primary" id="btn-review">查看解析</button>
+            <button class="btn ghost" id="btn-retake">重新考试</button>
+            <button class="btn ghost" id="btn-back-banks">回题库列表</button>
+          </div>
+        </div>
+        <div id="review-list" class="review-list hidden"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
