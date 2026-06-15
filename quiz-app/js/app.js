@@ -316,44 +316,53 @@ function retake() {
   renderAnswerSheet();
 }
 
+function readBankFile(file) {
+  const isDocx = /\.docx?$/i.test(file.name);
+  if (isDocx) {
+    return DocxParser.parseFile(file).catch((e) => {
+      throw new Error(`${file.name}: ${e.message}`);
+    });
+  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        resolve(Parser.parseFileContent(reader.result));
+      } catch (e) {
+        reject(new Error(`${file.name}: ${e.message}`));
+      }
+    };
+    reader.onerror = () => reject(new Error(`${file.name}: 读取失败`));
+    reader.readAsText(file, 'UTF-8');
+  });
+}
+
+function importBanks(banks) {
+  if (banks.length === 1) {
+    const bank = banks[0];
+    Storage.addBank({ ...bank, id: `bank_${Date.now()}` });
+    renderBanks();
+    alert(`导入成功：${bank.title}（${bank.questions.length} 题，${bank.meta.withAnswer} 题有答案）`);
+    return;
+  }
+
+  const merged = Parser.mergeBanks(banks, banks[0].title + '（合并版）');
+  Storage.addBank({ ...merged, id: `bank_${Date.now()}` });
+  renderBanks();
+  const dup = merged.meta.mergedFrom - merged.questions.length;
+  alert(
+    `合并成功：${merged.questions.length} 道不重复题\n` +
+      `（来自 ${banks.length} 个文件共 ${merged.meta.mergedFrom} 道，去重 ${dup} 道）\n` +
+      `其中 ${merged.meta.withAnswer} 道有答案`
+  );
+}
+
 function handleImportFiles(fileList) {
   const files = [...fileList];
   if (!files.length) return;
 
-  const read = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          resolve(Parser.parseFileContent(reader.result));
-        } catch (e) {
-          reject(new Error(`${file.name}: ${e.message}`));
-        }
-      };
-      reader.onerror = () => reject(new Error(`${file.name}: 读取失败`));
-      reader.readAsText(file, 'UTF-8');
-    });
-
-  Promise.all(files.map(read))
-    .then((banks) => {
-      if (banks.length === 1) {
-        const bank = banks[0];
-        Storage.addBank({ ...bank, id: `bank_${Date.now()}` });
-        renderBanks();
-        alert(`导入成功：${bank.title}（${bank.questions.length} 题，${bank.meta.withAnswer} 题有答案）`);
-        return;
-      }
-
-      const merged = Parser.mergeBanks(banks, banks[0].title + '（合并版）');
-      Storage.addBank({ ...merged, id: `bank_${Date.now()}` });
-      renderBanks();
-      const dup = merged.meta.mergedFrom - merged.questions.length;
-      alert(
-        `合并成功：${merged.questions.length} 道不重复题\n` +
-          `（来自 ${banks.length} 个文件共 ${merged.meta.mergedFrom} 道，去重 ${dup} 道）\n` +
-          `其中 ${merged.meta.withAnswer} 道有答案`
-      );
-    })
+  Promise.all(files.map(readBankFile))
+    .then(importBanks)
     .catch((e) => alert('导入失败：' + e.message));
 }
 
@@ -390,6 +399,11 @@ function exportBank(bankId, format) {
 
 function bindEvents() {
   $('#import-file').addEventListener('change', (e) => {
+    if (e.target.files?.length) handleImportFiles(e.target.files);
+    e.target.value = '';
+  });
+
+  $('#import-docx').addEventListener('change', (e) => {
     if (e.target.files?.length) handleImportFiles(e.target.files);
     e.target.value = '';
   });

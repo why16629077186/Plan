@@ -160,8 +160,14 @@ body {
   transition: background 0.2s;
 }
 
-.import-btn:hover {
-  background: var(--blue-dark);
+.import-btn.secondary {
+  background: #fff;
+  color: var(--blue-dark);
+  border: 2px solid var(--blue);
+}
+
+.import-btn.secondary:hover {
+  background: var(--blue-light);
 }
 
 .card-head {
