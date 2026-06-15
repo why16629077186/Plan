@@ -192,8 +192,27 @@ body {
 
 .bank-actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.bank-actions .btn {
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+
+.practice-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.practice-actions .btn {
+  padding: 6px 10px;
+  font-size: 0.82rem;
 }
 
 .btn {
@@ -248,11 +267,6 @@ body {
   align-items: flex-start;
   margin-bottom: 14px;
   gap: 12px;
-}
-
-.practice-actions {
-  display: flex;
-  gap: 8px;
 }
 
 .question-card {

@@ -51,8 +51,11 @@ function renderBanks() {
             <div class="bank-meta">${total} 题${ansHint} · 导入于 ${formatDate(bank.importedAt)}</div>
           </div>
           <div class="bank-actions">
-            <button class="btn primary" data-action="start" data-id="${bank.id}">开始刷题</button>
-            <button class="btn danger" data-action="delete" data-id="${bank.id}">删除</button>
+            <button class="btn primary" data-action="start" data-id="${bank.id}">刷题</button>
+            <button class="btn ghost" data-action="word" data-id="${bank.id}">Word</button>
+            <button class="btn ghost" data-action="anki" data-id="${bank.id}">Anki</button>
+            <button class="btn ghost" data-action="json" data-id="${bank.id}">JSON</button>
+            <button class="btn danger" data-action="delete" data-id="${bank.id}">删</button>
           </div>
         </div>`;
     })
@@ -329,6 +332,14 @@ function handleImport(file) {
   reader.readAsText(file, 'UTF-8');
 }
 
+function exportBank(bankId, format) {
+  const bank = Storage.getBank(bankId);
+  if (!bank) return;
+  if (format === 'word') Exporter.toWord(bank);
+  else if (format === 'anki') Exporter.toAnki(bank);
+  else if (format === 'json') Exporter.toJson(bank);
+}
+
 function bindEvents() {
   $('#import-file').addEventListener('change', (e) => {
     const file = e.target.files[0];
@@ -341,6 +352,9 @@ function bindEvents() {
     if (!btn) return;
     const id = btn.dataset.id;
     if (btn.dataset.action === 'start') startPractice(id);
+    if (btn.dataset.action === 'word') exportBank(id, 'word');
+    if (btn.dataset.action === 'anki') exportBank(id, 'anki');
+    if (btn.dataset.action === 'json') exportBank(id, 'json');
     if (btn.dataset.action === 'delete') {
       if (confirm('确定删除这套题库？')) {
         Storage.removeBank(id);
@@ -372,6 +386,12 @@ function bindEvents() {
   };
 
   $('#btn-shuffle').onclick = shuffleOrder;
+  $('#btn-export-word').onclick = () => {
+    if (state.currentBank) Exporter.toWord(state.currentBank);
+  };
+  $('#btn-export-anki').onclick = () => {
+    if (state.currentBank) Exporter.toAnki(state.currentBank);
+  };
   $('#btn-exit').onclick = () => showView('banks');
   $('#btn-review').onclick = () => {
     showView('result');
