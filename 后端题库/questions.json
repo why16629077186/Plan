@@ -1,0 +1,1228 @@
+{
+  "questions": [
+    {
+      "id": "jb-001",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "关于 Java 中 == 和 equals()，下列说法正确的是？",
+      "options": [
+        "A. 对 String 类型，== 始终比较字符内容",
+        "B. equals() 默认比较对象引用地址",
+        "C. 重写 equals() 后必须重写 hashCode()",
+        "D. 基本类型之间只能用 equals() 比较"
+      ],
+      "answer": "C",
+      "explanation": "Object.equals() 默认与 == 一样比较引用；重写 equals() 后应同步重写 hashCode()，否则在 HashMap 等集合中行为不一致。基本类型用 == 比较值。"
+    },
+    {
+      "id": "jb-002",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "下列哪个关键字不能用来修饰顶层类（非内部类）？",
+      "options": [
+        "A. public",
+        "B. abstract",
+        "C. static",
+        "D. final"
+      ],
+      "answer": "C",
+      "explanation": "顶层类不能用 static 修饰；static 只能修饰内部类的定义。public/abstract/final 均可用于顶层类。"
+    },
+    {
+      "id": "jb-003",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "Java 中 int 与 Integer 自动装箱时，以下代码输出什么？\nint a = 128; Integer b = 128; System.out.println(a == b);",
+      "options": [
+        "A. true",
+        "B. false",
+        "C. 编译错误",
+        "D. 运行时异常"
+      ],
+      "answer": "A",
+      "explanation": "int 与 Integer 比较时 Integer 自动拆箱为 int，比较的是数值，128 == 128 为 true。注意：两个 Integer 对象用 == 比较 128 时为 false（超出缓存池范围）。"
+    },
+    {
+      "id": "jb-004",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "关于 String、StringBuilder、StringBuffer，说法正确的是？",
+      "options": [
+        "A. String 可变，后两者不可变",
+        "B. StringBuffer 线程安全，StringBuilder 非线程安全",
+        "C. 三者均继承自 AbstractStringBuilder",
+        "D. 拼接字符串时 String 性能最好"
+      ],
+      "answer": "B",
+      "explanation": "String 不可变；StringBuffer 方法带 synchronized 线程安全；StringBuilder 非线程安全但性能更好。String 不继承 AbstractStringBuilder。"
+    },
+    {
+      "id": "jb-005",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "接口（interface）在 Java 8 之后可以包含？",
+      "options": [
+        "A. 私有实例字段",
+        "B. default 方法和 static 方法",
+        "C. protected 构造方法",
+        "D. 任意非 public 成员"
+      ],
+      "answer": "B",
+      "explanation": "Java 8 起接口可有 default 和 static 方法；Java 9 起可有 private 方法。接口字段默认 public static final，不能有实例字段或构造方法。"
+    },
+    {
+      "id": "jb-006",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "以下关于异常的说法，正确的是？",
+      "options": [
+        "A. Error 必须被 catch",
+        "B. finally 块一定会执行，即使 try 中有 return",
+        "C. 受检异常可以不处理直接编译通过",
+        "D. throw 和 throws 可以互换使用"
+      ],
+      "answer": "B",
+      "explanation": "finally 在方法 return 前执行（除非 System.exit）。Error 一般不捕获。受检异常必须处理或声明 throws。throw 用于抛出，throws 用于声明。"
+    },
+    {
+      "id": "jb-007",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "抽象类与接口的主要区别，以下哪项最准确？",
+      "options": [
+        "A. 抽象类不能有构造方法",
+        "B. 类可以实现多个抽象类",
+        "C. 抽象类可以有成员变量和非抽象方法",
+        "D. 接口中所有方法都是 abstract"
+      ],
+      "answer": "C",
+      "explanation": "抽象类可有构造方法、成员变量、具体方法；一个类只能继承一个类但可实现多个接口。Java 8+ 接口可有 default/static 方法，不全是 abstract。"
+    },
+    {
+      "id": "jb-008",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "以下代码输出什么？\nObject obj = \"hello\"; System.out.println(obj instanceof String);",
+      "options": [
+        "A. true",
+        "B. false",
+        "C. 编译错误",
+        "D. null"
+      ],
+      "answer": "A",
+      "explanation": "obj 实际引用的是 String 对象，instanceof String 为 true。编译通过因为 String 是 Object 的子类。"
+    },
+    {
+      "id": "jb-009",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "关于 Java 泛型擦除，正确的是？",
+      "options": [
+        "A. 运行时仍保留 List<String> 的类型信息",
+        "B. 不能创建泛型数组如 new T[10]",
+        "C. 基本类型可以作为泛型参数如 List<int>",
+        "D. 泛型擦除只影响方法返回值"
+      ],
+      "answer": "B",
+      "explanation": "泛型在编译后擦除为原始类型，运行时无类型参数信息。不能用基本类型作泛型参数。不能创建泛型数组。"
+    },
+    {
+      "id": "jb-010",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "static 关键字的作用，错误说法是？",
+      "options": [
+        "A. static 方法不能访问非 static 成员",
+        "B. static 块在类加载时执行",
+        "C. static 方法可以被重写（override）",
+        "D. static 变量属于类而非实例"
+      ],
+      "answer": "C",
+      "explanation": "static 方法不能被 override，只能被隐藏（hide）。子类定义同名 static 方法是隐藏而非重写。"
+    },
+    {
+      "id": "jb-011",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "以下哪个集合类是线程安全的？",
+      "options": [
+        "A. ArrayList",
+        "B. HashMap",
+        "C. Vector",
+        "D. LinkedList"
+      ],
+      "answer": "C",
+      "explanation": "Vector 方法带 synchronized 修饰，线程安全。ArrayList、HashMap、LinkedList 均非线程安全。"
+    },
+    {
+      "id": "jb-012",
+      "category": "Java基础",
+      "type": "multi",
+      "stem": "以下哪些属于 Java 基本数据类型？（多选）",
+      "options": [
+        "A. int",
+        "B. Integer",
+        "C. boolean",
+        "D. String"
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "Java 8 种基本类型：byte/short/int/long/float/double/char/boolean。Integer 和 String 是引用类型。"
+    },
+    {
+      "id": "jb-013",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "关于 Object 类，说法错误的是？",
+      "options": [
+        "A. 所有类都直接或间接继承 Object",
+        "B. hashCode() 默认返回对象内存地址的哈希",
+        "C. finalize() 在 Java 9 后被标记为 deprecated",
+        "D. clone() 默认实现深拷贝"
+      ],
+      "answer": "D",
+      "explanation": "Object.clone() 默认是浅拷贝，只复制引用。hashCode 默认与地址相关（实现因 JVM 而异）。finalize 已废弃。"
+    },
+    {
+      "id": "jb-014",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "Java 中 break 和 continue 的区别？",
+      "options": [
+        "A. break 跳过本次循环，continue 结束循环",
+        "B. break 结束整个循环，continue 跳过本次进入下一次",
+        "C. 两者都只能用于 for 循环",
+        "D. continue 可以带标签跳转到外层循环"
+      ],
+      "answer": "B",
+      "explanation": "break 终止循环；continue 跳过当前迭代。两者都可用于 for/while/do-while，且都支持标签形式。"
+    },
+    {
+      "id": "jb-015",
+      "category": "Java基础",
+      "type": "single",
+      "stem": "以下关于 Java 反射（Reflection），说法正确的是？",
+      "options": [
+        "A. 反射只能在运行时获取 public 成员",
+        "B. 反射可以突破 private 访问限制",
+        "C. 反射对性能完全没有影响",
+        "D. 反射不能创建对象实例"
+      ],
+      "answer": "B",
+      "explanation": "反射可通过 setAccessible(true) 访问 private 成员。反射有性能开销。可获取非 public 成员并创建实例。"
+    },
+    {
+      "id": "jh-001",
+      "category": "集合",
+      "type": "single",
+      "stem": "ArrayList 和 LinkedList 的主要区别？",
+      "options": [
+        "A. ArrayList 基于数组，随机访问 O(1)；LinkedList 基于双向链表，头尾插入 O(1)",
+        "B. LinkedList 比 ArrayList 占用内存更少",
+        "C. ArrayList 是线程安全的",
+        "D. LinkedList 不支持 Iterator"
+      ],
+      "answer": "A",
+      "explanation": "ArrayList 动态数组，随机访问快；LinkedList 双向链表，插入删除快但随机访问 O(n)。两者均非线程安全。"
+    },
+    {
+      "id": "jh-002",
+      "category": "集合",
+      "type": "single",
+      "stem": "HashMap 在 JDK 1.8 中，当链表长度超过多少会转为红黑树？",
+      "options": [
+        "A. 4",
+        "B. 8",
+        "C. 16",
+        "D. 32"
+      ],
+      "answer": "B",
+      "explanation": "JDK 1.8 HashMap 当链表长度 > 8 且数组长度 >= 64 时转为红黑树；当红黑树节点 < 6 时退化为链表。"
+    },
+    {
+      "id": "jh-003",
+      "category": "集合",
+      "type": "single",
+      "stem": "HashMap 默认初始容量和负载因子分别是？",
+      "options": [
+        "A. 8, 0.5",
+        "B. 16, 0.75",
+        "C. 32, 0.75",
+        "D. 16, 0.5"
+      ],
+      "answer": "B",
+      "explanation": "HashMap 默认 initialCapacity=16，loadFactor=0.75。超过 threshold（容量×负载因子）时扩容为 2 倍。"
+    },
+    {
+      "id": "jh-004",
+      "category": "集合",
+      "type": "single",
+      "stem": "ConcurrentHashMap 在 JDK 1.8 中如何保证线程安全？",
+      "options": [
+        "A. 全局 synchronized",
+        "B. 分段锁（Segment）",
+        "C. CAS + synchronized 锁单个桶头节点",
+        "D. 读写锁 ReentrantReadWriteLock"
+      ],
+      "answer": "C",
+      "explanation": "JDK 1.7 用 Segment 分段锁；JDK 1.8 改为 CAS 插入 + synchronized 锁住链表/红黑树头节点，粒度更细。"
+    },
+    {
+      "id": "jh-005",
+      "category": "集合",
+      "type": "single",
+      "stem": "以下哪个 Map 实现保证插入顺序？",
+      "options": [
+        "A. HashMap",
+        "B. TreeMap",
+        "C. LinkedHashMap",
+        "D. ConcurrentHashMap"
+      ],
+      "answer": "C",
+      "explanation": "LinkedHashMap 维护双向链表记录插入顺序（或访问顺序）。TreeMap 按 key 排序，HashMap 无序。"
+    },
+    {
+      "id": "jh-006",
+      "category": "集合",
+      "type": "single",
+      "stem": "HashSet 的底层实现是？",
+      "options": [
+        "A. 数组",
+        "B. 链表",
+        "C. HashMap",
+        "D. 红黑树"
+      ],
+      "answer": "C",
+      "explanation": "HashSet 底层是 HashMap，元素存为 key，value 是固定的 Object 占位符 PRESENT。"
+    },
+    {
+      "id": "jh-007",
+      "category": "集合",
+      "type": "single",
+      "stem": "Iterator 的 fail-fast 机制是指？",
+      "options": [
+        "A. 遍历中修改集合会抛 ConcurrentModificationException",
+        "B. 遍历速度尽可能快",
+        "C. 多线程同时遍历会加锁",
+        "D. 迭代器不能删除元素"
+      ],
+      "answer": "A",
+      "explanation": "ArrayList、HashMap 等 fail-fast 迭代器通过 modCount 检测结构性修改，会抛 ConcurrentModificationException。ConcurrentHashMap 是 fail-safe。"
+    },
+    {
+      "id": "jh-008",
+      "category": "集合",
+      "type": "single",
+      "stem": "TreeMap 的排序依赖于？",
+      "options": [
+        "A. 插入顺序",
+        "B. 哈希值",
+        "C. Comparable 或 Comparator",
+        "D. 元素加入的先后"
+      ],
+      "answer": "C",
+      "explanation": "TreeMap 基于红黑树，按 key 的自然顺序（Comparable）或构造时传入的 Comparator 排序。"
+    },
+    {
+      "id": "jh-009",
+      "category": "集合",
+      "type": "multi",
+      "stem": "以下哪些集合类允许存储 null 元素？（多选）",
+      "options": [
+        "A. HashMap",
+        "B. ConcurrentHashMap",
+        "C. ArrayList",
+        "D. TreeMap"
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "HashMap 允许一个 null key 和多个 null value；ArrayList 允许 null。ConcurrentHashMap 不允许 null；TreeMap 不允许 null key。"
+    },
+    {
+      "id": "jh-010",
+      "category": "集合",
+      "type": "single",
+      "stem": "PriorityQueue 的底层数据结构是？",
+      "options": [
+        "A. 链表",
+        "B. 数组实现的小顶堆",
+        "C. 红黑树",
+        "D. 哈希表"
+      ],
+      "answer": "B",
+      "explanation": "PriorityQueue 用数组实现的二叉堆（默认小顶堆），插入/删除 O(log n)，非线程安全。"
+    },
+    {
+      "id": "jh-011",
+      "category": "集合",
+      "type": "single",
+      "stem": "Collections.synchronizedList() 包装后的 List 使用时需要注意？",
+      "options": [
+        "A. 完全不需要额外同步",
+        "B. 迭代时仍需手动同步",
+        "C. 性能与 ConcurrentHashMap 相同",
+        "D. 不能再添加元素"
+      ],
+      "answer": "B",
+      "explanation": "synchronizedList 各方法单独同步，但迭代操作（含增强 for）仍需手动 synchronized(list) 包裹，否则可能 ConcurrentModificationException。"
+    },
+    {
+      "id": "jh-012",
+      "category": "集合",
+      "type": "single",
+      "stem": "HashMap 的 key 为什么建议重写 equals 和 hashCode？",
+      "options": [
+        "A. 提高遍历速度",
+        "B. 保证相同逻辑 key 定位到同一桶并正确比较",
+        "C. 减少内存占用",
+        "D. 满足 Serializable 要求"
+      ],
+      "answer": "B",
+      "explanation": "HashMap 先按 hashCode 定位桶，再用 equals 比较。不重写会导致逻辑相等的对象被当作不同 key。"
+    },
+    {
+      "id": "jh-013",
+      "category": "集合",
+      "type": "single",
+      "stem": "CopyOnWriteArrayList 适用于什么场景？",
+      "options": [
+        "A. 写多读少",
+        "B. 读多写少",
+        "C. 读写均衡",
+        "D. 大量随机删除"
+      ],
+      "answer": "B",
+      "explanation": "写时复制整个数组，写操作昂贵；读无锁，适合读多写少如监听器列表。"
+    },
+    {
+      "id": "jh-014",
+      "category": "集合",
+      "type": "single",
+      "stem": "以下关于 Set 接口，说法正确的是？",
+      "options": [
+        "A. Set 可以包含重复元素",
+        "B. Set 元素无序且唯一（具体实现可能有序）",
+        "C. Set 一定按插入顺序排列",
+        "D. Set 不能用 Iterator 遍历"
+      ],
+      "answer": "B",
+      "explanation": "Set 不允许重复元素。HashSet 无序，LinkedHashSet 保序，TreeSet 排序。均可迭代。"
+    },
+    {
+      "id": "bf-001",
+      "category": "并发",
+      "type": "single",
+      "stem": "创建线程的方式，以下哪个是推荐做法（JDK 8+）？",
+      "options": [
+        "A. 直接 new Thread()",
+        "B. 实现 Runnable 或 Callable 并提交给线程池",
+        "C. 继承 Thread 类",
+        "D. 使用 Object 的 wait/notify 创建"
+      ],
+      "answer": "B",
+      "explanation": "阿里规范等推荐用线程池管理线程，避免频繁创建销毁。实现 Runnable/Callable 解耦任务与线程。"
+    },
+    {
+      "id": "bf-002",
+      "category": "并发",
+      "type": "single",
+      "stem": "synchronized 和 ReentrantLock 的主要区别？",
+      "options": [
+        "A. synchronized 可中断，Lock 不可",
+        "B. Lock 支持公平锁、可中断、多条件队列",
+        "C. synchronized 性能一定更差",
+        "D. Lock 是 JVM 内置关键字"
+      ],
+      "answer": "B",
+      "explanation": "ReentrantLock 支持公平/非公平、lockInterruptibly、多个 Condition。synchronized 是 JVM 关键字，自动释放锁。"
+    },
+    {
+      "id": "bf-003",
+      "category": "并发",
+      "type": "single",
+      "stem": "volatile 关键字能保证？",
+      "options": [
+        "A. 原子性",
+        "B. 可见性和禁止指令重排序",
+        "C. 互斥性",
+        "D. 线程安全"
+      ],
+      "answer": "B",
+      "explanation": "volatile 保证可见性和有序性，不保证复合操作的原子性（如 i++）。需要原子性用 synchronized 或 Atomic 类。"
+    },
+    {
+      "id": "bf-004",
+      "category": "并发",
+      "type": "single",
+      "stem": "ThreadLocal 的作用是？",
+      "options": [
+        "A. 让所有线程共享一个变量",
+        "B. 为每个线程提供变量的独立副本",
+        "C. 替代 synchronized",
+        "D. 实现线程间通信"
+      ],
+      "answer": "B",
+      "explanation": "ThreadLocal 为每个线程维护独立副本，常用于数据库连接、用户上下文等。用完需 remove 避免内存泄漏（线程池场景）。"
+    },
+    {
+      "id": "bf-005",
+      "category": "并发",
+      "type": "single",
+      "stem": "线程池 ThreadPoolExecutor 的核心参数不包括？",
+      "options": [
+        "A. corePoolSize",
+        "B. maximumPoolSize",
+        "C. keepAliveTime",
+        "D. threadName"
+      ],
+      "answer": "D",
+      "explanation": "核心参数：corePoolSize、maximumPoolSize、keepAliveTime、workQueue、threadFactory、RejectedExecutionHandler。threadName 通过 ThreadFactory 设置。"
+    },
+    {
+      "id": "bf-006",
+      "category": "并发",
+      "type": "single",
+      "stem": "线程池的拒绝策略 AbortPolicy 的行为是？",
+      "options": [
+        "A. 静默丢弃任务",
+        "B. 由调用线程执行任务",
+        "C. 抛出 RejectedExecutionException",
+        "D. 丢弃队列最老任务"
+      ],
+      "answer": "C",
+      "explanation": "AbortPolicy 默认策略，抛异常。CallerRunsPolicy 调用者执行；DiscardPolicy 丢弃；DiscardOldestPolicy 丢弃最老。"
+    },
+    {
+      "id": "bf-007",
+      "category": "并发",
+      "type": "single",
+      "stem": "AQS（AbstractQueuedSynchronizer）是什么？",
+      "options": [
+        "A. 一种垃圾回收器",
+        "B. 构建锁和同步器的框架",
+        "C. 线程池的实现类",
+        "D. 网络 IO 模型"
+      ],
+      "answer": "B",
+      "explanation": "AQS 是 JUC 基础框架，ReentrantLock、Semaphore、CountDownLatch 等基于 AQS 实现，用 CLH 队列管理等待线程。"
+    },
+    {
+      "id": "bf-008",
+      "category": "并发",
+      "type": "single",
+      "stem": "CountDownLatch 和 CyclicBarrier 的区别？",
+      "options": [
+        "A. 完全相同",
+        "B. CountDownLatch 不可重用，CyclicBarrier 可循环使用",
+        "C. CyclicBarrier 只能有一个线程等待",
+        "D. CountDownLatch 用于互斥"
+      ],
+      "answer": "B",
+      "explanation": "CountDownLatch 计数递减到 0 后不可重置；CyclicBarrier 所有线程到达屏障后可重用，适合多轮同步。"
+    },
+    {
+      "id": "bf-009",
+      "category": "并发",
+      "type": "single",
+      "stem": "以下哪个是原子类？",
+      "options": [
+        "A. AtomicInteger",
+        "B. Integer",
+        "C. volatile int",
+        "D. synchronized int"
+      ],
+      "answer": "A",
+      "explanation": "java.util.concurrent.atomic 包提供 AtomicInteger、AtomicLong、AtomicReference 等，基于 CAS 实现原子操作。"
+    },
+    {
+      "id": "bf-010",
+      "category": "并发",
+      "type": "single",
+      "stem": "死锁产生的必要条件不包括？",
+      "options": [
+        "A. 互斥",
+        "B. 占有且等待",
+        "C. 不可抢占",
+        "D. 单线程执行"
+      ],
+      "answer": "D",
+      "explanation": "死锁四条件：互斥、占有且等待、不可抢占、循环等待。单线程不会产生死锁。"
+    },
+    {
+      "id": "bf-011",
+      "category": "并发",
+      "type": "multi",
+      "stem": "以下哪些属于 JUC 包中的工具？（多选）",
+      "options": [
+        "A. Semaphore",
+        "B. HashMap",
+        "C. CompletableFuture",
+        "D. ArrayList"
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "Semaphore 信号量、CompletableFuture 异步编排均在 java.util.concurrent。HashMap 和 ArrayList 在 java.util。"
+    },
+    {
+      "id": "bf-012",
+      "category": "并发",
+      "type": "single",
+      "stem": "synchronized 锁升级过程（JDK 6+）大致顺序是？",
+      "options": [
+        "A. 重量级 → 轻量级 → 偏向锁",
+        "B. 偏向锁 → 轻量级 → 重量级",
+        "C. 只用重量级锁",
+        "D. 只用 CAS"
+      ],
+      "answer": "B",
+      "explanation": "JDK 6 优化后锁升级：无竞争时偏向锁 → 有竞争升级轻量级（CAS）→ 竞争激烈升级重量级（操作系统 mutex）。"
+    },
+    {
+      "id": "bf-013",
+      "category": "并发",
+      "type": "single",
+      "stem": "wait() 和 sleep() 的区别？",
+      "options": [
+        "A. wait 在 Object 上，sleep 在 Thread 上",
+        "B. wait 不释放锁，sleep 释放锁",
+        "C. 两者都需要在 synchronized 块中调用",
+        "D. sleep 必须由 notify 唤醒"
+      ],
+      "answer": "A",
+      "explanation": "wait 是 Object 方法，需在 synchronized 中调用并释放锁；sleep 是 Thread 静态方法，不释放锁。"
+    },
+    {
+      "id": "bf-014",
+      "category": "并发",
+      "type": "single",
+      "stem": "CompletableFuture 相比 Future 的主要优势？",
+      "options": [
+        "A. 只能同步获取结果",
+        "B. 支持链式回调和组合多个异步任务",
+        "C. 不能指定线程池",
+        "D. 不能处理异常"
+      ],
+      "answer": "B",
+      "explanation": "CompletableFuture 支持 thenApply、thenCompose、allOf 等组合异步操作，可指定 Executor，提供 exceptionally 处理异常。"
+    },
+    {
+      "id": "bf-015",
+      "category": "并发",
+      "type": "single",
+      "stem": "线程安全的单例写法中，双重检查锁（DCL）需要 volatile 修饰实例变量的原因是？",
+      "options": [
+        "A. 提高性能",
+        "B. 防止指令重排导致其他线程拿到未初始化完成的对象",
+        "C. 保证原子性",
+        "D. 减少内存占用"
+      ],
+      "answer": "B",
+      "explanation": "new 对象非原子：分配内存→初始化→赋值引用。可能重排为先赋值再初始化，volatile 禁止重排。"
+    },
+    {
+      "id": "bf-016",
+      "category": "并发",
+      "type": "single",
+      "stem": "ForkJoinPool 适用于？",
+      "options": [
+        "A. IO 密集型任务",
+        "B. 可拆分的 CPU 密集型计算任务",
+        "C. 单线程顺序任务",
+        "D. 定时任务"
+      ],
+      "answer": "B",
+      "explanation": "ForkJoinPool 基于工作窃取算法，适合递归拆分的大计算任务（如大数组求和）。IO 密集更适合传统线程池。"
+    },
+    {
+      "id": "bf-017",
+      "category": "并发",
+      "type": "single",
+      "stem": "Semaphore 的主要用途是？",
+      "options": [
+        "A. 互斥访问一个资源",
+        "B. 控制同时访问某资源的线程数量",
+        "C. 线程间传递数据",
+        "D. 替代数据库事务"
+      ],
+      "answer": "B",
+      "explanation": "Semaphore 信号量控制并发许可数，如限流、连接池最大连接数。mutex 可用 permits=1 实现但 ReentrantLock 更常见。"
+    },
+    {
+      "id": "bf-018",
+      "category": "并发",
+      "type": "single",
+      "stem": "happens-before 原则的作用是？",
+      "options": [
+        "A. 保证 JVM 启动顺序",
+        "B. 定义内存可见性的保证规则",
+        "C. 决定线程优先级",
+        "D. 替代 synchronized"
+      ],
+      "answer": "B",
+      "explanation": "happens-before 是 JMM 核心规则，如锁释放 happens-before 后续加锁、volatile 写 happens-before 后续读，保证可见性。"
+    },
+    {
+      "id": "nw-001",
+      "category": "计网",
+      "type": "single",
+      "stem": "OSI 七层模型中，HTTP 属于哪一层？",
+      "options": [
+        "A. 网络层",
+        "B. 传输层",
+        "C. 应用层",
+        "D. 会话层"
+      ],
+      "answer": "C",
+      "explanation": "HTTP 是应用层协议。TCP/UDP 在传输层，IP 在网络层。"
+    },
+    {
+      "id": "nw-002",
+      "category": "计网",
+      "type": "single",
+      "stem": "TCP 和 UDP 的主要区别？",
+      "options": [
+        "A. TCP 无连接，UDP 有连接",
+        "B. TCP 可靠面向连接，UDP 不可靠无连接",
+        "C. UDP 一定比 TCP 慢",
+        "D. TCP 不能用于视频直播"
+      ],
+      "answer": "B",
+      "explanation": "TCP 三次握手、可靠传输、有序；UDP 无连接、不保证可靠，但开销小、延迟低，适合 DNS、直播等。"
+    },
+    {
+      "id": "nw-003",
+      "category": "计网",
+      "type": "single",
+      "stem": "TCP 三次握手过程中，第二次握手服务器发送的标志位是？",
+      "options": [
+        "A. SYN",
+        "B. ACK",
+        "C. SYN+ACK",
+        "D. FIN"
+      ],
+      "answer": "C",
+      "explanation": "第一次客户端 SYN；第二次服务器 SYN+ACK；第三次客户端 ACK。两次握手不能防止历史连接。"
+    },
+    {
+      "id": "nw-004",
+      "category": "计网",
+      "type": "single",
+      "stem": "HTTP 状态码 404 表示？",
+      "options": [
+        "A. 服务器内部错误",
+        "B. 请求成功",
+        "C. 资源未找到",
+        "D. 需要重定向"
+      ],
+      "answer": "C",
+      "explanation": "404 Not Found 资源不存在。200 成功，301/302 重定向，500 服务器错误。"
+    },
+    {
+      "id": "nw-005",
+      "category": "计网",
+      "type": "single",
+      "stem": "HTTPS 相比 HTTP 主要增加了？",
+      "options": [
+        "A. 更快的传输速度",
+        "B. SSL/TLS 加密",
+        "C. 更少的握手次数",
+        "D. UDP 传输"
+      ],
+      "answer": "B",
+      "explanation": "HTTPS = HTTP + TLS，加密传输防窃听篡改，需证书验证身份。握手更多，不是更快。"
+    },
+    {
+      "id": "nw-006",
+      "category": "计网",
+      "type": "single",
+      "stem": "DNS 的主要作用是将？",
+      "options": [
+        "A. IP 转 MAC",
+        "B. 域名解析为 IP 地址",
+        "C. 端口号转进程号",
+        "D. URL 转 HTML"
+      ],
+      "answer": "B",
+      "explanation": "DNS（Domain Name System）将域名解析为 IP，如 www.example.com → 93.184.216.34。"
+    },
+    {
+      "id": "nw-007",
+      "category": "计网",
+      "type": "single",
+      "stem": "GET 和 POST 请求的主要区别（常见考点）？",
+      "options": [
+        "A. GET 一定有 body，POST 没有",
+        "B. GET 参数通常在 URL，POST 可在 body；语义上 GET 幂等查询，POST 提交数据",
+        "C. POST 比 GET 更快",
+        "D. GET 比 POST 更安全"
+      ],
+      "answer": "B",
+      "explanation": "规范上 GET 幂等、可缓存，参数在 URL；POST 提交实体。实际 POST 也可带 URL 参数，GET 技术上可有 body 但不推荐。"
+    },
+    {
+      "id": "nw-008",
+      "category": "计网",
+      "type": "single",
+      "stem": "Cookie 和 Session 的区别？",
+      "options": [
+        "A. Cookie 存服务器，Session 存浏览器",
+        "B. Session 通常存服务器，Cookie 存客户端",
+        "C. 两者完全相同",
+        "D. Session 不能设置过期时间"
+      ],
+      "answer": "B",
+      "explanation": "Session 数据在服务器，通过 SessionId（常放 Cookie）关联客户端。Cookie 是客户端存储的小文本。"
+    },
+    {
+      "id": "nw-009",
+      "category": "计网",
+      "type": "single",
+      "stem": "TCP 滑动窗口机制主要用于？",
+      "options": [
+        "A. 加密数据",
+        "B. 流量控制",
+        "C. 域名解析",
+        "D. 路由选择"
+      ],
+      "answer": "B",
+      "explanation": "滑动窗口实现流量控制，限制发送方速率。拥塞控制用拥塞窗口等算法。"
+    },
+    {
+      "id": "nw-010",
+      "category": "计网",
+      "type": "single",
+      "stem": "RESTful API 中，更新资源通常用哪个 HTTP 方法？",
+      "options": [
+        "A. GET",
+        "B. POST",
+        "C. PUT 或 PATCH",
+        "D. DELETE"
+      ],
+      "answer": "C",
+      "explanation": "REST 惯例：GET 查询，POST 创建，PUT/PATCH 更新，DELETE 删除。PUT 全量更新，PATCH 部分更新。"
+    },
+    {
+      "id": "nw-011",
+      "category": "计网",
+      "type": "multi",
+      "stem": "以下哪些属于应用层协议？（多选）",
+      "options": [
+        "A. HTTP",
+        "B. TCP",
+        "C. FTP",
+        "D. IP"
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "HTTP、FTP、SMTP、DNS 都是应用层。TCP/UDP 传输层，IP 网络层。"
+    },
+    {
+      "id": "nw-012",
+      "category": "计网",
+      "type": "single",
+      "stem": "WebSocket 与 HTTP 长轮询相比的主要优势？",
+      "options": [
+        "A. 只能单向通信",
+        "B. 建立全双工持久连接，实时性更好",
+        "C. 不需要握手",
+        "D. 只能传文本"
+      ],
+      "answer": "B",
+      "explanation": "WebSocket 握手后保持连接，双向实时通信，适合聊天、推送。HTTP 长轮询仍是一次请求一次响应模式。"
+    },
+    {
+      "id": "nw-013",
+      "category": "计网",
+      "type": "single",
+      "stem": "IP 地址 127.0.0.1 表示？",
+      "options": [
+        "A. 广播地址",
+        "B. 本机回环地址",
+        "C. 公网地址",
+        "D. 默认网关"
+      ],
+      "answer": "B",
+      "explanation": "127.0.0.1 是本地回环（localhost），访问本机服务。0.0.0.0 表示所有网卡监听。"
+    },
+    {
+      "id": "nw-014",
+      "category": "计网",
+      "type": "single",
+      "stem": "HTTP/1.1 默认的连接方式是？",
+      "options": [
+        "A. 短连接，每次请求新建 TCP",
+        "B. 持久连接（Keep-Alive）",
+        "C. 只用 UDP",
+        "D. 无需 TCP"
+      ],
+      "answer": "B",
+      "explanation": "HTTP/1.1 默认持久连接，一个 TCP 可发多个请求。HTTP/1.0 默认短连接需 Connection: keep-alive 开启。"
+    },
+    {
+      "id": "nw-015",
+      "category": "计网",
+      "type": "single",
+      "stem": "跨域（CORS）问题产生的原因是？",
+      "options": [
+        "A. 服务器宕机",
+        "B. 浏览器同源策略限制不同源的前端请求",
+        "C. DNS 解析失败",
+        "D. TCP 连接超时"
+      ],
+      "answer": "B",
+      "explanation": "浏览器同源策略：协议、域名、端口任一不同即为跨域。需服务端 CORS 头或代理解决。"
+    },
+    {
+      "id": "nw-016",
+      "category": "计网",
+      "type": "single",
+      "stem": "负载均衡中，轮询（Round Robin）策略是指？",
+      "options": [
+        "A. 随机选一台服务器",
+        "B. 依次将请求分配给每台服务器",
+        "C. 选连接数最少的",
+        "D. 选响应最快的"
+      ],
+      "answer": "B",
+      "explanation": "轮询按顺序分配。其他策略：加权轮询、最少连接、IP 哈希、一致性哈希等。"
+    },
+    {
+      "id": "nw-017",
+      "category": "计网",
+      "type": "single",
+      "stem": "JWT（JSON Web Token）常用于？",
+      "options": [
+        "A. 数据库索引",
+        "B. 无状态身份认证",
+        "C. TCP 拥塞控制",
+        "D. 文件压缩"
+      ],
+      "answer": "B",
+      "explanation": "JWT 将用户信息签名编码在 token 中，服务端无状态验证，常用于前后端分离认证。注意防 XSS 窃取和过期刷新。"
+    },
+    {
+      "id": "nw-018",
+      "category": "计网",
+      "type": "single",
+      "stem": "ping 命令使用哪种协议？",
+      "options": [
+        "A. TCP",
+        "B. UDP",
+        "C. ICMP",
+        "D. HTTP"
+      ],
+      "answer": "C",
+      "explanation": "ping 使用 ICMP Echo Request/Reply 检测网络连通性和延迟。"
+    },
+    {
+      "id": "nw-019",
+      "category": "计网",
+      "type": "single",
+      "stem": "反向代理（如 Nginx）的主要作用不包括？",
+      "options": [
+        "A. 负载均衡",
+        "B. 隐藏后端真实服务器",
+        "C. 直接替代 MySQL 存储",
+        "D. SSL 终结"
+      ],
+      "answer": "C",
+      "explanation": "Nginx 反向代理做负载均衡、隐藏后端、HTTPS 卸载、静态资源等，不替代数据库存储。"
+    },
+    {
+      "id": "db-001",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "InnoDB 和 MyISAM 的主要区别？",
+      "options": [
+        "A. MyISAM 支持事务",
+        "B. InnoDB 支持事务和外键，行级锁",
+        "C. InnoDB 不支持索引",
+        "D. 两者完全相同"
+      ],
+      "answer": "B",
+      "explanation": "InnoDB 支持事务（ACID）、外键、行级锁、崩溃恢复，MySQL 5.5+ 默认引擎。MyISAM 表级锁、不支持事务。"
+    },
+    {
+      "id": "db-002",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "MySQL 索引中，B+ 树相比 B 树的优势是？",
+      "options": [
+        "A. 非叶子节点也存数据",
+        "B. 叶子节点形成有序链表，范围查询更高效",
+        "C. 树更高",
+        "D. 不支持等值查询"
+      ],
+      "answer": "B",
+      "explanation": "B+ 树数据只在叶子节点，叶子间链表连接，范围扫描友好。InnoDB 聚簇索引叶子存整行数据。"
+    },
+    {
+      "id": "db-003",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "以下哪种情况可能导致索引失效？",
+      "options": [
+        "A. 对索引列使用函数如 WHERE YEAR(create_time)=2024",
+        "B. 使用主键查询",
+        "C. 覆盖索引查询",
+        "D. 最左前缀匹配"
+      ],
+      "answer": "A",
+      "explanation": "对索引列运算/函数、隐式类型转换、like '%abc' 前缀模糊、违反最左前缀等可能导致索引失效，需 EXPLAIN 分析。"
+    },
+    {
+      "id": "db-004",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "事务的 ACID 中，I（Isolation）指？",
+      "options": [
+        "A. 原子性",
+        "B. 一致性",
+        "C. 隔离性",
+        "D. 持久性"
+      ],
+      "answer": "C",
+      "explanation": "A 原子性、C 一致性、I 隔离性、D 持久性。隔离性通过锁和 MVCC 控制并发事务相互影响。"
+    },
+    {
+      "id": "db-005",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "MySQL 默认隔离级别是？",
+      "options": [
+        "A. READ UNCOMMITTED",
+        "B. READ COMMITTED",
+        "C. REPEATABLE READ",
+        "D. SERIALIZABLE"
+      ],
+      "answer": "C",
+      "explanation": "MySQL InnoDB 默认 REPEATABLE READ（可重复读），通过 MVCC + 间隙锁减少幻读。"
+    },
+    {
+      "id": "db-006",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "聚簇索引和非聚簇索引的区别？",
+      "options": [
+        "A. 聚簇索引叶子存整行数据，一张表只有一个",
+        "B. 聚簇索引可以有多个",
+        "C. 非聚簇索引不占用空间",
+        "D. 没有区别"
+      ],
+      "answer": "A",
+      "explanation": "InnoDB 主键是聚簇索引，叶子节点存完整行。二级索引叶子存主键值，需回表查询。"
+    },
+    {
+      "id": "db-007",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "慢查询优化的第一步通常是？",
+      "options": [
+        "A. 直接加内存",
+        "B. EXPLAIN 分析执行计划",
+        "C. 删除所有索引",
+        "D. 换数据库"
+      ],
+      "answer": "B",
+      "explanation": "用 EXPLAIN 看 type、key、rows、Extra 等，定位全表扫描、索引失效原因，再针对性加索引或改 SQL。"
+    },
+    {
+      "id": "db-008",
+      "category": "MySQL",
+      "type": "multi",
+      "stem": "以下哪些属于 SQL 聚合函数？（多选）",
+      "options": [
+        "A. COUNT()",
+        "B. SUM()",
+        "C. WHERE",
+        "D. AVG()"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "COUNT、SUM、AVG、MAX、MIN 是聚合函数。WHERE 是条件过滤，常与 GROUP BY 配合 HAVING 过滤分组。"
+    },
+    {
+      "id": "db-009",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "redo log 和 binlog 的区别？",
+      "options": [
+        "A. redo log 用于崩溃恢复，binlog 用于主从复制和归档",
+        "B. 两者完全相同",
+        "C. binlog 是 InnoDB 物理日志",
+        "D. redo log 只在 MyISAM 中使用"
+      ],
+      "answer": "A",
+      "explanation": "redo log InnoDB 引擎层物理日志，保证持久性；binlog Server 层逻辑日志，用于复制和点对点恢复。两阶段提交保证一致。"
+    },
+    {
+      "id": "db-010",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "LEFT JOIN 和 INNER JOIN 的区别？",
+      "options": [
+        "A. LEFT JOIN 返回左表全部记录，右表无匹配则为 NULL",
+        "B. INNER JOIN 返回左表全部",
+        "C. 没有区别",
+        "D. LEFT JOIN 更快"
+      ],
+      "answer": "A",
+      "explanation": "INNER JOIN 只返回两表匹配行；LEFT JOIN 保留左表所有行。RIGHT JOIN 保留右表。"
+    },
+    {
+      "id": "db-011",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "数据库范式中，第三范式（3NF）要求？",
+      "options": [
+        "A. 属性不可再分",
+        "B. 消除非主属性对主键的部分依赖",
+        "C. 消除非主属性对主键的传递依赖",
+        "D. 不需要主键"
+      ],
+      "answer": "C",
+      "explanation": "1NF 原子性；2NF 消除部分依赖；3NF 消除传递依赖。实际设计常适度反范式化换性能。"
+    },
+    {
+      "id": "db-012",
+      "category": "MySQL",
+      "type": "single",
+      "stem": "分页查询 LIMIT 100000, 10 变慢的主要原因是？",
+      "options": [
+        "A. 网络带宽不够",
+        "B. 需要扫描并丢弃前 100000 行",
+        "C. 索引太多",
+        "D. 事务隔离级别太高"
+      ],
+      "answer": "B",
+      "explanation": "大 offset 需扫描大量行再丢弃。优化：延迟关联、记录上次最大 id、搜索引擎等。"
+    },
+    {
+      "id": "lx-001",
+      "category": "Linux",
+      "type": "single",
+      "stem": "查看当前目录下文件列表（含隐藏文件）的命令是？",
+      "options": [
+        "A. ls",
+        "B. ls -a",
+        "C. ls -l",
+        "D. pwd"
+      ],
+      "answer": "B",
+      "explanation": "ls -a 显示所有含隐藏文件（. 开头）；ls -l 长格式；pwd 显示当前路径。"
+    },
+    {
+      "id": "lx-002",
+      "category": "Linux",
+      "type": "single",
+      "stem": "查找包含某字符串的文件内容，常用命令是？",
+      "options": [
+        "A. find",
+        "B. grep",
+        "C. chmod",
+        "D. kill"
+      ],
+      "answer": "B",
+      "explanation": "grep 搜索文本内容。find 按文件名/属性查找。如 grep -r \"error\" /var/log。"
+    },
+    {
+      "id": "lx-003",
+      "category": "Linux",
+      "type": "single",
+      "stem": "修改文件权限为 rwxr-xr-x（755），命令是？",
+      "options": [
+        "A. chmod 755 file",
+        "B. chown 755 file",
+        "C. chmod 644 file",
+        "D. chgrp 755 file"
+      ],
+      "answer": "A",
+      "explanation": "chmod 改权限，755 = rwxr-xr-x。chown 改所有者，chgrp 改组。"
+    },
+    {
+      "id": "lx-004",
+      "category": "Linux",
+      "type": "single",
+      "stem": "查看某端口是否被占用，可用？",
+      "options": [
+        "A. netstat -tlnp 或 ss -tlnp",
+        "B. ls -a",
+        "C. mkdir",
+        "D. top"
+      ],
+      "answer": "A",
+      "explanation": "netstat/ss 查看端口监听和进程。如 ss -tlnp | grep 8080。top 看 CPU/内存。"
+    },
+    {
+      "id": "lx-005",
+      "category": "Linux",
+      "type": "single",
+      "stem": "后台运行 Java 程序并输出日志到文件，常见写法是？",
+      "options": [
+        "A. java -jar app.jar",
+        "B. nohup java -jar app.jar > app.log 2>&1 &",
+        "C. kill java",
+        "D. chmod java"
+      ],
+      "answer": "B",
+      "explanation": "nohup 忽略挂断信号，& 后台运行，> 重定向标准输出，2>&1 将错误也重定向到同一文件。"
+    },
+    {
+      "id": "lx-006",
+      "category": "Linux",
+      "type": "single",
+      "stem": "vim 中保存并退出是？",
+      "options": [
+        "A. :q",
+        "B. :wq",
+        "C. :q!",
+        "D. Esc"
+      ],
+      "answer": "B",
+      "explanation": ":wq 保存退出；:q 未修改时退出；:q! 强制不保存退出。先按 Esc 到命令模式。"
+    },
+    {
+      "id": "lx-007",
+      "category": "Linux",
+      "type": "multi",
+      "stem": "以下哪些是进程管理相关命令？（多选）",
+      "options": [
+        "A. ps",
+        "B. kill",
+        "C. cat",
+        "D. top"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "ps 查看进程，kill 发送信号终止，top 动态监控。cat 查看文件内容。"
+    },
+    {
+      "id": "lx-008",
+      "category": "Linux",
+      "type": "single",
+      "stem": "软链接（symbolic link）与硬链接的区别？",
+      "options": [
+        "A. 软链接可以跨文件系统，硬链接一般不能跨分区",
+        "B. 硬链接是快捷方式，软链接不是",
+        "C. 删除原文件后软链接仍有效",
+        "D. 没有区别"
+      ],
+      "answer": "A",
+      "explanation": "软链接类似快捷方式，存路径，可跨文件系统，原文件删则失效。硬链接同一 inode，不能跨分区，原文件删链接仍有效。"
+    }
+  ]
+}
