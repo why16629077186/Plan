@@ -1,29 +1,39 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
 
-REM Build a properly encoded file:// URL (handles Chinese folder names and spaces)
-for /f "delims=" %%u in ('powershell -NoProfile -Command "[uri]::new((Join-Path -LiteralPath '%~dp0' -ChildPath 'index.html')).AbsoluteUri"') do set "QUIZ_URL=%%u"
-
-REM Prefer Microsoft Edge (preinstalled on Windows 10/11)
-set "EDGE=%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"
-if not exist "%EDGE%" set "EDGE=%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"
-if not exist "%EDGE%" set "EDGE=%LOCALAPPDATA%\Microsoft\Edge\Application\msedge.exe"
-
-if exist "%EDGE%" (
-    start "" "%EDGE%" --app="%QUIZ_URL%"
-    exit /b 0
+if not exist "%~dp0index.html" (
+  echo Cannot find index.html
+  echo Open 开始刷题.bat inside the 后端题库 folder.
+  pause
+  exit /b 1
 )
 
-REM Fallback: Google Chrome
-set "CHROME=%ProgramFiles%\Google\Chrome\Application\chrome.exe"
-if not exist "%CHROME%" set "CHROME=%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"
-if not exist "%CHROME%" set "CHROME=%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe"
+set "APP=%~dp0index.html"
 
-if exist "%CHROME%" (
-    start "" "%CHROME%" --app="%QUIZ_URL%"
-    exit /b 0
+if exist "%LOCALAPPDATA%\Microsoft\Edge\Application\msedge.exe" (
+  start "" "%LOCALAPPDATA%\Microsoft\Edge\Application\msedge.exe" --app="%APP%"
+  exit /b 0
+)
+if exist "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" (
+  start "" "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" --app="%APP%"
+  exit /b 0
+)
+if exist "%ProgramFiles%\Microsoft\Edge\Application\msedge.exe" (
+  start "" "%ProgramFiles%\Microsoft\Edge\Application\msedge.exe" --app="%APP%"
+  exit /b 0
+)
+if exist "%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe" (
+  start "" "%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe" --app="%APP%"
+  exit /b 0
+)
+if exist "%ProgramFiles%\Google\Chrome\Application\chrome.exe" (
+  start "" "%ProgramFiles%\Google\Chrome\Application\chrome.exe" --app="%APP%"
+  exit /b 0
+)
+if exist "%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" (
+  start "" "%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe" --app="%APP%"
+  exit /b 0
 )
 
-echo 未找到 Microsoft Edge 或 Google Chrome，请安装后重试。
-pause
+start "" "%APP%"
+exit /b 0
