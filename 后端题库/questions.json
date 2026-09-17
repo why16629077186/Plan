@@ -12,7 +12,8 @@
         "D. 基本类型之间只能用 equals() 比较"
       ],
       "answer": "C",
-      "explanation": "Object.equals() 默认与 == 一样比较引用；重写 equals() 后应同步重写 hashCode()，否则在 HashMap 等集合中行为不一致。基本类型用 == 比较值。"
+      "explanation": "Object.equals() 默认与 == 一样比较引用；重写 equals() 后应同步重写 hashCode()，否则在 HashMap 等集合中行为不一致。基本类型用 == 比较值。",
+      "concept": "这题考 == 和 equals() 的区别。== 比较是不是同一个对象（地址）；equals() 比较内容是否相等。HashMap 找 key 时两个都要用到，所以重写 equals 时通常也要重写 hashCode。"
     },
     {
       "id": "jb-002",
@@ -26,7 +27,8 @@
         "D. final"
       ],
       "answer": "C",
-      "explanation": "顶层类不能用 static 修饰；static 只能修饰内部类的定义。public/abstract/final 均可用于顶层类。"
+      "explanation": "顶层类不能用 static 修饰；static 只能修饰内部类的定义。public/abstract/final 均可用于顶层类。",
+      "concept": "这题考 Java 关键字能修饰什么。顶层类就是直接写在 .java 文件里的普通类。static 修饰类只能用于内部类，不能用于顶层类。"
     },
     {
       "id": "jb-003",
@@ -40,7 +42,8 @@
         "D. 运行时异常"
       ],
       "answer": "A",
-      "explanation": "int 与 Integer 比较时 Integer 自动拆箱为 int，比较的是数值，128 == 128 为 true。注意：两个 Integer 对象用 == 比较 128 时为 false（超出缓存池范围）。"
+      "explanation": "int 与 Integer 比较时 Integer 自动拆箱为 int，比较的是数值，128 == 128 为 true。注意：两个 Integer 对象用 == 比较 128 时为 false（超出缓存池范围）。",
+      "concept": "这题考自动装箱/拆箱。int 是基本类型，Integer 是包装类。基本类型和包装类比较时，包装类会自动拆成数字再比。两个 Integer 对象用 == 比的是地址，不是数值。"
     },
     {
       "id": "jb-004",
@@ -54,7 +57,8 @@
         "D. 拼接字符串时 String 性能最好"
       ],
       "answer": "B",
-      "explanation": "String 不可变；StringBuffer 方法带 synchronized 线程安全；StringBuilder 非线程安全但性能更好。String 不继承 AbstractStringBuilder。"
+      "explanation": "String 不可变；StringBuffer 方法带 synchronized 线程安全；StringBuilder 非线程安全但性能更好。String 不继承 AbstractStringBuilder。",
+      "concept": "这题考三种字符串类的区别。String 创建后不能改；StringBuilder/StringBuffer 可以拼接修改。StringBuffer 带锁线程安全但慢，StringBuilder 更快。"
     },
     {
       "id": "jb-005",
@@ -68,7 +72,8 @@
         "D. 任意非 public 成员"
       ],
       "answer": "B",
-      "explanation": "Java 8 起接口可有 default 和 static 方法；Java 9 起可有 private 方法。接口字段默认 public static final，不能有实例字段或构造方法。"
+      "explanation": "Java 8 起接口可有 default 和 static 方法；Java 9 起可有 private 方法。接口字段默认 public static final，不能有实例字段或构造方法。",
+      "concept": "这题考接口在 Java 8 的新特性。以前接口只能有抽象方法；Java 8 起可以有 default 方法（带默认实现）和 static 方法，让老接口也能加新方法。"
     },
     {
       "id": "jb-006",
@@ -82,7 +87,8 @@
         "D. throw 和 throws 可以互换使用"
       ],
       "answer": "B",
-      "explanation": "finally 在方法 return 前执行（除非 System.exit）。Error 一般不捕获。受检异常必须处理或声明 throws。throw 用于抛出，throws 用于声明。"
+      "explanation": "finally 在方法 return 前执行（除非 System.exit）。Error 一般不捕获。受检异常必须处理或声明 throws。throw 用于抛出，throws 用于声明。",
+      "concept": "这题考异常处理基础。try-catch-finally 是处理错误的结构。finally 不管有没有 return 一般都会执行。受检异常必须处理或声明 throws。"
     },
     {
       "id": "jb-007",
@@ -96,7 +102,8 @@
         "D. 接口中所有方法都是 abstract"
       ],
       "answer": "C",
-      "explanation": "抽象类可有构造方法、成员变量、具体方法；一个类只能继承一个类但可实现多个接口。Java 8+ 接口可有 default/static 方法，不全是 abstract。"
+      "explanation": "抽象类可有构造方法、成员变量、具体方法；一个类只能继承一个类但可实现多个接口。Java 8+ 接口可有 default/static 方法，不全是 abstract。",
+      "concept": "这题考抽象类和接口的区别。抽象类像「半成品类」，可以有成员变量和已实现的方法；接口更像「能力合同」，一个类可以实现多个接口。"
     },
     {
       "id": "jb-008",
@@ -110,7 +117,8 @@
         "D. null"
       ],
       "answer": "A",
-      "explanation": "obj 实际引用的是 String 对象，instanceof String 为 true。编译通过因为 String 是 Object 的子类。"
+      "explanation": "obj 实际引用的是 String 对象，instanceof String 为 true。编译通过因为 String 是 Object 的子类。",
+      "concept": "这题考 instanceof 运算符。它判断对象「实际类型」是不是某个类或接口的子类。变量类型是 Object，但实际存的是 String，所以 instanceof String 为 true。"
     },
     {
       "id": "jb-009",
@@ -124,7 +132,8 @@
         "D. 泛型擦除只影响方法返回值"
       ],
       "answer": "B",
-      "explanation": "泛型在编译后擦除为原始类型，运行时无类型参数信息。不能用基本类型作泛型参数。不能创建泛型数组。"
+      "explanation": "泛型在编译后擦除为原始类型，运行时无类型参数信息。不能用基本类型作泛型参数。不能创建泛型数组。",
+      "concept": "这题考泛型擦除。泛型只在编译时检查类型，运行后 List<String> 变成普通 List。所以不能 new T[]，也不能写 List<int>（要用 Integer）。"
     },
     {
       "id": "jb-010",
@@ -138,7 +147,8 @@
         "D. static 变量属于类而非实例"
       ],
       "answer": "C",
-      "explanation": "static 方法不能被 override，只能被隐藏（hide）。子类定义同名 static 方法是隐藏而非重写。"
+      "explanation": "static 方法不能被 override，只能被隐藏（hide）。子类定义同名 static 方法是隐藏而非重写。",
+      "concept": "这题考 static 的含义。static 属于类，不属于某个对象。static 方法不能重写（override），子类写同名 static 只是隐藏父类的。"
     },
     {
       "id": "jb-011",
@@ -152,7 +162,8 @@
         "D. LinkedList"
       ],
       "answer": "C",
-      "explanation": "Vector 方法带 synchronized 修饰，线程安全。ArrayList、HashMap、LinkedList 均非线程安全。"
+      "explanation": "Vector 方法带 synchronized 修饰，线程安全。ArrayList、HashMap、LinkedList 均非线程安全。",
+      "concept": "这题考哪些集合是线程安全的。线程安全=多个线程同时操作不会乱。日常用的 ArrayList、HashMap 都不安全；老类 Vector 方法带 synchronized 是安全的。"
     },
     {
       "id": "jb-012",
@@ -169,7 +180,8 @@
         "A",
         "C"
       ],
-      "explanation": "Java 8 种基本类型：byte/short/int/long/float/double/char/boolean。Integer 和 String 是引用类型。"
+      "explanation": "Java 8 种基本类型：byte/short/int/long/float/double/char/boolean。Integer 和 String 是引用类型。",
+      "concept": "这题考基本类型和包装类型。基本类型直接存值（int、boolean 等）；Integer、String 是对象，在堆里。Java 有 8 种基本类型。"
     },
     {
       "id": "jb-013",
@@ -183,7 +195,8 @@
         "D. clone() 默认实现深拷贝"
       ],
       "answer": "D",
-      "explanation": "Object.clone() 默认是浅拷贝，只复制引用。hashCode 默认与地址相关（实现因 JVM 而异）。finalize 已废弃。"
+      "explanation": "Object.clone() 默认是浅拷贝，只复制引用。hashCode 默认与地址相关（实现因 JVM 而异）。finalize 已废弃。",
+      "concept": "这题考 Object 根类的常用方法。所有类都继承 Object。clone() 默认是浅拷贝（只复制引用）；深拷贝要自己实现。"
     },
     {
       "id": "jb-014",
@@ -197,7 +210,8 @@
         "D. continue 可以带标签跳转到外层循环"
       ],
       "answer": "B",
-      "explanation": "break 终止循环；continue 跳过当前迭代。两者都可用于 for/while/do-while，且都支持标签形式。"
+      "explanation": "break 终止循环；continue 跳过当前迭代。两者都可用于 for/while/do-while，且都支持标签形式。",
+      "concept": "这题考循环控制。break 直接结束整个循环；continue 跳过本次，继续下一次。写循环时经常用到。"
     },
     {
       "id": "jb-015",
@@ -211,7 +225,8 @@
         "D. 反射不能创建对象实例"
       ],
       "answer": "B",
-      "explanation": "反射可通过 setAccessible(true) 访问 private 成员。反射有性能开销。可获取非 public 成员并创建实例。"
+      "explanation": "反射可通过 setAccessible(true) 访问 private 成员。反射有性能开销。可获取非 public 成员并创建实例。",
+      "concept": "这题考反射 Reflection。运行时动态获取类信息、调用方法。可以访问 private 成员（setAccessible），但有性能开销，框架里常用。"
     },
     {
       "id": "jh-001",
@@ -225,7 +240,8 @@
         "D. LinkedList 不支持 Iterator"
       ],
       "answer": "A",
-      "explanation": "ArrayList 动态数组，随机访问快；LinkedList 双向链表，插入删除快但随机访问 O(n)。两者均非线程安全。"
+      "explanation": "ArrayList 动态数组，随机访问快；LinkedList 双向链表，插入删除快但随机访问 O(n)。两者均非线程安全。",
+      "concept": "这题考 List 两种实现的区别。ArrayList 底层数组，按下标取值快；LinkedList 底层双向链表，头尾插入快但按下标取值慢。"
     },
     {
       "id": "jh-002",
@@ -239,7 +255,8 @@
         "D. 32"
       ],
       "answer": "B",
-      "explanation": "JDK 1.8 HashMap 当链表长度 > 8 且数组长度 >= 64 时转为红黑树；当红黑树节点 < 6 时退化为链表。"
+      "explanation": "JDK 1.8 HashMap 当链表长度 > 8 且数组长度 >= 64 时转为红黑树；当红黑树节点 < 6 时退化为链表。",
+      "concept": "这题考 HashMap 在 JDK 8 的优化。桶里链表太长会变慢，所以超过 8 个节点且数组够大时转成红黑树，查找从 O(n) 变 O(log n)。"
     },
     {
       "id": "jh-003",
@@ -253,7 +270,8 @@
         "D. 16, 0.5"
       ],
       "answer": "B",
-      "explanation": "HashMap 默认 initialCapacity=16，loadFactor=0.75。超过 threshold（容量×负载因子）时扩容为 2 倍。"
+      "explanation": "HashMap 默认 initialCapacity=16，loadFactor=0.75。超过 threshold（容量×负载因子）时扩容为 2 倍。",
+      "concept": "这题考 HashMap 默认参数。初始容量 16 表示桶数组大小；负载因子 0.75 表示装到 75% 就扩容翻倍。面试常背这两个数。"
     },
     {
       "id": "jh-004",
@@ -267,7 +285,8 @@
         "D. 读写锁 ReentrantReadWriteLock"
       ],
       "answer": "C",
-      "explanation": "JDK 1.7 用 Segment 分段锁；JDK 1.8 改为 CAS 插入 + synchronized 锁住链表/红黑树头节点，粒度更细。"
+      "explanation": "JDK 1.7 用 Segment 分段锁；JDK 1.8 改为 CAS 插入 + synchronized 锁住链表/红黑树头节点，粒度更细。",
+      "concept": "这题考 ConcurrentHashMap 怎么保证线程安全。JDK 8 用 CAS 加 synchronized 锁单个桶头节点，比 JDK 7 的分段锁更细粒度。"
     },
     {
       "id": "jh-005",
@@ -281,7 +300,8 @@
         "D. ConcurrentHashMap"
       ],
       "answer": "C",
-      "explanation": "LinkedHashMap 维护双向链表记录插入顺序（或访问顺序）。TreeMap 按 key 排序，HashMap 无序。"
+      "explanation": "LinkedHashMap 维护双向链表记录插入顺序（或访问顺序）。TreeMap 按 key 排序，HashMap 无序。",
+      "concept": "这题考 Map 是否保持插入顺序。HashMap 无序；LinkedHashMap 用双向链表记录顺序；TreeMap 按 key 排序。"
     },
     {
       "id": "jh-006",
@@ -295,7 +315,8 @@
         "D. 红黑树"
       ],
       "answer": "C",
-      "explanation": "HashSet 底层是 HashMap，元素存为 key，value 是固定的 Object 占位符 PRESENT。"
+      "explanation": "HashSet 底层是 HashMap，元素存为 key，value 是固定的 Object 占位符 PRESENT。",
+      "concept": "这题考 HashSet 底层。Set 不允许重复，HashSet 用 HashMap 实现：元素当 key，value 是一个固定占位对象。"
     },
     {
       "id": "jh-007",
@@ -309,7 +330,8 @@
         "D. 迭代器不能删除元素"
       ],
       "answer": "A",
-      "explanation": "ArrayList、HashMap 等 fail-fast 迭代器通过 modCount 检测结构性修改，会抛 ConcurrentModificationException。ConcurrentHashMap 是 fail-safe。"
+      "explanation": "ArrayList、HashMap 等 fail-fast 迭代器通过 modCount 检测结构性修改，会抛 ConcurrentModificationException。ConcurrentHashMap 是 fail-safe。",
+      "concept": "这题考 fail-fast 机制。用迭代器遍历时如果直接改集合结构（增删），会抛 ConcurrentModificationException。用迭代器的 remove 才安全。"
     },
     {
       "id": "jh-008",
@@ -323,7 +345,8 @@
         "D. 元素加入的先后"
       ],
       "answer": "C",
-      "explanation": "TreeMap 基于红黑树，按 key 的自然顺序（Comparable）或构造时传入的 Comparator 排序。"
+      "explanation": "TreeMap 基于红黑树，按 key 的自然顺序（Comparable）或构造时传入的 Comparator 排序。",
+      "concept": "这题考 TreeMap 排序规则。红黑树按 key 排序，要么 key 自己实现 Comparable，要么构造时传入 Comparator 比较器。"
     },
     {
       "id": "jh-009",
@@ -340,7 +363,8 @@
         "A",
         "C"
       ],
-      "explanation": "HashMap 允许一个 null key 和多个 null value；ArrayList 允许 null。ConcurrentHashMap 不允许 null；TreeMap 不允许 null key。"
+      "explanation": "HashMap 允许一个 null key 和多个 null value；ArrayList 允许 null。ConcurrentHashMap 不允许 null；TreeMap 不允许 null key。",
+      "concept": "这题考哪些集合允许 null。HashMap 允许一个 null key；ConcurrentHashMap 不允许 null（多线程下容易歧义）；TreeMap 不允许 null key。"
     },
     {
       "id": "jh-010",
@@ -354,7 +378,8 @@
         "D. 哈希表"
       ],
       "answer": "B",
-      "explanation": "PriorityQueue 用数组实现的二叉堆（默认小顶堆），插入/删除 O(log n)，非线程安全。"
+      "explanation": "PriorityQueue 用数组实现的二叉堆（默认小顶堆），插入/删除 O(log n)，非线程安全。",
+      "concept": "这题考优先队列底层。PriorityQueue 用数组实现的堆（默认小顶堆），队头永远是最小（或最大）元素，适合 TopK 问题。"
     },
     {
       "id": "jh-011",
@@ -368,7 +393,8 @@
         "D. 不能再添加元素"
       ],
       "answer": "B",
-      "explanation": "synchronizedList 各方法单独同步，但迭代操作（含增强 for）仍需手动 synchronized(list) 包裹，否则可能 ConcurrentModificationException。"
+      "explanation": "synchronizedList 各方法单独同步，但迭代操作（含增强 for）仍需手动 synchronized(list) 包裹，否则可能 ConcurrentModificationException。",
+      "concept": "这题考 synchronizedList 的坑。单个方法有锁，但遍历（for-each）不是原子操作，迭代时仍需手动 synchronized 包裹整个遍历。"
     },
     {
       "id": "jh-012",
@@ -382,7 +408,8 @@
         "D. 满足 Serializable 要求"
       ],
       "answer": "B",
-      "explanation": "HashMap 先按 hashCode 定位桶，再用 equals 比较。不重写会导致逻辑相等的对象被当作不同 key。"
+      "explanation": "HashMap 先按 hashCode 定位桶，再用 equals 比较。不重写会导致逻辑相等的对象被当作不同 key。",
+      "concept": "这题考为什么实体类要重写 equals 和 hashCode。HashMap 先按 hashCode 找桶，再用 equals 比 key。不重写会导致「逻辑相同」的对象被当成不同 key。"
     },
     {
       "id": "jh-013",
@@ -396,7 +423,8 @@
         "D. 大量随机删除"
       ],
       "answer": "B",
-      "explanation": "写时复制整个数组，写操作昂贵；读无锁，适合读多写少如监听器列表。"
+      "explanation": "写时复制整个数组，写操作昂贵；读无锁，适合读多写少如监听器列表。",
+      "concept": "这题考 CopyOnWriteArrayList 场景。写的时候复制整个数组，成本高；读不加锁。适合读特别多、写很少的场景（如监听器列表）。"
     },
     {
       "id": "jh-014",
@@ -410,7 +438,8 @@
         "D. Set 不能用 Iterator 遍历"
       ],
       "answer": "B",
-      "explanation": "Set 不允许重复元素。HashSet 无序，LinkedHashSet 保序，TreeSet 排序。均可迭代。"
+      "explanation": "Set 不允许重复元素。HashSet 无序，LinkedHashSet 保序，TreeSet 排序。均可迭代。",
+      "concept": "这题考 Set 接口特点。Set 元素不重复。具体是否有序看实现：HashSet 无序，LinkedHashSet 保插入序，TreeSet 排序。"
     },
     {
       "id": "bf-001",
@@ -424,7 +453,8 @@
         "D. 使用 Object 的 wait/notify 创建"
       ],
       "answer": "B",
-      "explanation": "阿里规范等推荐用线程池管理线程，避免频繁创建销毁。实现 Runnable/Callable 解耦任务与线程。"
+      "explanation": "阿里规范等推荐用线程池管理线程，避免频繁创建销毁。实现 Runnable/Callable 解耦任务与线程。",
+      "concept": "这题考创建线程的推荐方式。不要频繁 new Thread()，用线程池 + Runnable/Callable 复用线程，Spring 和项目里都是这么干的。"
     },
     {
       "id": "bf-002",
@@ -438,7 +468,8 @@
         "D. Lock 是 JVM 内置关键字"
       ],
       "answer": "B",
-      "explanation": "ReentrantLock 支持公平/非公平、lockInterruptibly、多个 Condition。synchronized 是 JVM 关键字，自动释放锁。"
+      "explanation": "ReentrantLock 支持公平/非公平、lockInterruptibly、多个 Condition。synchronized 是 JVM 关键字，自动释放锁。",
+      "concept": "这题考 synchronized 和 ReentrantLock 区别。synchronized 是 JVM 关键字自动释放锁；Lock 更灵活：可中断、可公平、可多条件队列。"
     },
     {
       "id": "bf-003",
@@ -452,7 +483,8 @@
         "D. 线程安全"
       ],
       "answer": "B",
-      "explanation": "volatile 保证可见性和有序性，不保证复合操作的原子性（如 i++）。需要原子性用 synchronized 或 Atomic 类。"
+      "explanation": "volatile 保证可见性和有序性，不保证复合操作的原子性（如 i++）。需要原子性用 synchronized 或 Atomic 类。",
+      "concept": "这题考 volatile 能保证什么。volatile 保证「可见性」和「有序性」，但不保证 i++ 这种复合操作的原子性。要原子性用 synchronized 或 Atomic 类。"
     },
     {
       "id": "bf-004",
@@ -466,7 +498,8 @@
         "D. 实现线程间通信"
       ],
       "answer": "B",
-      "explanation": "ThreadLocal 为每个线程维护独立副本，常用于数据库连接、用户上下文等。用完需 remove 避免内存泄漏（线程池场景）。"
+      "explanation": "ThreadLocal 为每个线程维护独立副本，常用于数据库连接、用户上下文等。用完需 remove 避免内存泄漏（线程池场景）。",
+      "concept": "这题考 ThreadLocal。每个线程有自己独立的变量副本，互不干扰。常用于存当前登录用户、数据库连接。线程池用完要 remove 防内存泄漏。"
     },
     {
       "id": "bf-005",
@@ -480,7 +513,8 @@
         "D. threadName"
       ],
       "answer": "D",
-      "explanation": "核心参数：corePoolSize、maximumPoolSize、keepAliveTime、workQueue、threadFactory、RejectedExecutionHandler。threadName 通过 ThreadFactory 设置。"
+      "explanation": "核心参数：corePoolSize、maximumPoolSize、keepAliveTime、workQueue、threadFactory、RejectedExecutionHandler。threadName 通过 ThreadFactory 设置。",
+      "concept": "这题考线程池核心参数。corePoolSize 核心线程数、maximumPoolSize 最大线程数、keepAliveTime 空闲存活时间。threadName 不是构造参数，用 ThreadFactory 设置。"
     },
     {
       "id": "bf-006",
@@ -494,7 +528,8 @@
         "D. 丢弃队列最老任务"
       ],
       "answer": "C",
-      "explanation": "AbortPolicy 默认策略，抛异常。CallerRunsPolicy 调用者执行；DiscardPolicy 丢弃；DiscardOldestPolicy 丢弃最老。"
+      "explanation": "AbortPolicy 默认策略，抛异常。CallerRunsPolicy 调用者执行；DiscardPolicy 丢弃；DiscardOldestPolicy 丢弃最老。",
+      "concept": "这题考线程池拒绝策略。队列满了且线程到上限时触发。AbortPolicy 直接抛异常（默认）；CallerRunsPolicy 让调用者线程自己跑。"
     },
     {
       "id": "bf-007",
@@ -508,7 +543,8 @@
         "D. 网络 IO 模型"
       ],
       "answer": "B",
-      "explanation": "AQS 是 JUC 基础框架，ReentrantLock、Semaphore、CountDownLatch 等基于 AQS 实现，用 CLH 队列管理等待线程。"
+      "explanation": "AQS 是 JUC 基础框架，ReentrantLock、Semaphore、CountDownLatch 等基于 AQS 实现，用 CLH 队列管理等待线程。",
+      "concept": "这题考 AQS 是什么。AbstractQueuedSynchronizer 是 JUC 里锁和同步器的基础框架，ReentrantLock、Semaphore、CountDownLatch 都基于它。"
     },
     {
       "id": "bf-008",
@@ -522,7 +558,8 @@
         "D. CountDownLatch 用于互斥"
       ],
       "answer": "B",
-      "explanation": "CountDownLatch 计数递减到 0 后不可重置；CyclicBarrier 所有线程到达屏障后可重用，适合多轮同步。"
+      "explanation": "CountDownLatch 计数递减到 0 后不可重置；CyclicBarrier 所有线程到达屏障后可重用，适合多轮同步。",
+      "concept": "这题考 CountDownLatch 和 CyclicBarrier。CountDownLatch 计数减到 0 就结束，不能重置；CyclicBarrier 所有线程到齐后可以下一轮，可重用。"
     },
     {
       "id": "bf-009",
@@ -536,7 +573,8 @@
         "D. synchronized int"
       ],
       "answer": "A",
-      "explanation": "java.util.concurrent.atomic 包提供 AtomicInteger、AtomicLong、AtomicReference 等，基于 CAS 实现原子操作。"
+      "explanation": "java.util.concurrent.atomic 包提供 AtomicInteger、AtomicLong、AtomicReference 等，基于 CAS 实现原子操作。",
+      "concept": "这题考原子类。AtomicInteger 等用 CAS（比较并交换）实现无锁原子操作，适合计数器场景，比 synchronized 轻量。"
     },
     {
       "id": "bf-010",
@@ -550,7 +588,8 @@
         "D. 单线程执行"
       ],
       "answer": "D",
-      "explanation": "死锁四条件：互斥、占有且等待、不可抢占、循环等待。单线程不会产生死锁。"
+      "explanation": "死锁四条件：互斥、占有且等待、不可抢占、循环等待。单线程不会产生死锁。",
+      "concept": "这题考死锁四个必要条件。互斥、占有且等待、不可抢占、循环等待——四个同时满足才可能死锁。单线程不可能死锁。"
     },
     {
       "id": "bf-011",
@@ -567,7 +606,8 @@
         "A",
         "C"
       ],
-      "explanation": "Semaphore 信号量、CompletableFuture 异步编排均在 java.util.concurrent。HashMap 和 ArrayList 在 java.util。"
+      "explanation": "Semaphore 信号量、CompletableFuture 异步编排均在 java.util.concurrent。HashMap 和 ArrayList 在 java.util。",
+      "concept": "这题考 JUC 包有哪些工具。java.util.concurrent 包里有 Semaphore、CompletableFuture 等；HashMap、ArrayList 在 java.util 里。"
     },
     {
       "id": "bf-012",
@@ -581,7 +621,8 @@
         "D. 只用 CAS"
       ],
       "answer": "B",
-      "explanation": "JDK 6 优化后锁升级：无竞争时偏向锁 → 有竞争升级轻量级（CAS）→ 竞争激烈升级重量级（操作系统 mutex）。"
+      "explanation": "JDK 6 优化后锁升级：无竞争时偏向锁 → 有竞争升级轻量级（CAS）→ 竞争激烈升级重量级（操作系统 mutex）。",
+      "concept": "这题考 synchronized 锁升级。JDK 6 优化：无竞争用偏向锁 → 有竞争升级轻量级锁（CAS）→ 竞争激烈升级重量级锁（操作系统 mutex）。"
     },
     {
       "id": "bf-013",
@@ -595,7 +636,8 @@
         "D. sleep 必须由 notify 唤醒"
       ],
       "answer": "A",
-      "explanation": "wait 是 Object 方法，需在 synchronized 中调用并释放锁；sleep 是 Thread 静态方法，不释放锁。"
+      "explanation": "wait 是 Object 方法，需在 synchronized 中调用并释放锁；sleep 是 Thread 静态方法，不释放锁。",
+      "concept": "这题考 wait 和 sleep。wait 是 Object 的方法，必须在 synchronized 里调用且会释放锁；sleep 是 Thread 的方法，不释放锁。"
     },
     {
       "id": "bf-014",
@@ -609,7 +651,8 @@
         "D. 不能处理异常"
       ],
       "answer": "B",
-      "explanation": "CompletableFuture 支持 thenApply、thenCompose、allOf 等组合异步操作，可指定 Executor，提供 exceptionally 处理异常。"
+      "explanation": "CompletableFuture 支持 thenApply、thenCompose、allOf 等组合异步操作，可指定 Executor，提供 exceptionally 处理异常。",
+      "concept": "这题考 CompletableFuture。比 Future 强在可以链式回调（thenApply）、组合多个异步任务（allOf）、指定线程池、处理异常。"
     },
     {
       "id": "bf-015",
@@ -623,7 +666,8 @@
         "D. 减少内存占用"
       ],
       "answer": "B",
-      "explanation": "new 对象非原子：分配内存→初始化→赋值引用。可能重排为先赋值再初始化，volatile 禁止重排。"
+      "explanation": "new 对象非原子：分配内存→初始化→赋值引用。可能重排为先赋值再初始化，volatile 禁止重排。",
+      "concept": "这题考双重检查锁为什么要 volatile。new 对象分三步，可能指令重排导致其他线程拿到未初始化完的对象。volatile 禁止这种重排。"
     },
     {
       "id": "bf-016",
@@ -637,7 +681,8 @@
         "D. 定时任务"
       ],
       "answer": "B",
-      "explanation": "ForkJoinPool 基于工作窃取算法，适合递归拆分的大计算任务（如大数组求和）。IO 密集更适合传统线程池。"
+      "explanation": "ForkJoinPool 基于工作窃取算法，适合递归拆分的大计算任务（如大数组求和）。IO 密集更适合传统线程池。",
+      "concept": "这题考 ForkJoinPool 适用场景。工作窃取算法，适合可拆分的 CPU 密集计算（大数组求和）。IO 密集用普通线程池更合适。"
     },
     {
       "id": "bf-017",
@@ -651,7 +696,8 @@
         "D. 替代数据库事务"
       ],
       "answer": "B",
-      "explanation": "Semaphore 信号量控制并发许可数，如限流、连接池最大连接数。mutex 可用 permits=1 实现但 ReentrantLock 更常见。"
+      "explanation": "Semaphore 信号量控制并发许可数，如限流、连接池最大连接数。mutex 可用 permits=1 实现但 ReentrantLock 更常见。",
+      "concept": "这题考 Semaphore 信号量。控制同时有多少线程能访问资源，比如连接池最多 10 个连接。permits=1 可当互斥锁用。"
     },
     {
       "id": "bf-018",
@@ -665,7 +711,8 @@
         "D. 替代 synchronized"
       ],
       "answer": "B",
-      "explanation": "happens-before 是 JMM 核心规则，如锁释放 happens-before 后续加锁、volatile 写 happens-before 后续读，保证可见性。"
+      "explanation": "happens-before 是 JMM 核心规则，如锁释放 happens-before 后续加锁、volatile 写 happens-before 后续读，保证可见性。",
+      "concept": "这题考 happens-before 原则。Java 内存模型里定义「谁先谁后可见」的规则，比如 unlock happens-before 后续 lock，保证多线程读写的可见性。"
     },
     {
       "id": "nw-001",
@@ -679,7 +726,8 @@
         "D. 会话层"
       ],
       "answer": "C",
-      "explanation": "HTTP 是应用层协议。TCP/UDP 在传输层，IP 在网络层。"
+      "explanation": "HTTP 是应用层协议。TCP/UDP 在传输层，IP 在网络层。",
+      "concept": "这题考 OSI 七层模型。从下到上：物理、数据链路、网络、传输、会话、表示、应用。HTTP 是应用层，我们写接口直接接触的层。"
     },
     {
       "id": "nw-002",
@@ -693,7 +741,8 @@
         "D. TCP 不能用于视频直播"
       ],
       "answer": "B",
-      "explanation": "TCP 三次握手、可靠传输、有序；UDP 无连接、不保证可靠，但开销小、延迟低，适合 DNS、直播等。"
+      "explanation": "TCP 三次握手、可靠传输、有序；UDP 无连接、不保证可靠，但开销小、延迟低，适合 DNS、直播等。",
+      "concept": "这题考 TCP 和 UDP 区别。TCP 可靠、有序、有连接（三次握手）；UDP 无连接、不保证到达，但快，适合直播、DNS。"
     },
     {
       "id": "nw-003",
@@ -707,7 +756,8 @@
         "D. FIN"
       ],
       "answer": "C",
-      "explanation": "第一次客户端 SYN；第二次服务器 SYN+ACK；第三次客户端 ACK。两次握手不能防止历史连接。"
+      "explanation": "第一次客户端 SYN；第二次服务器 SYN+ACK；第三次客户端 ACK。两次握手不能防止历史连接。",
+      "concept": "这题考 TCP 三次握手。客户端 SYN → 服务器 SYN+ACK → 客户端 ACK。三次才能确认双方都能收发，防止旧连接干扰。"
     },
     {
       "id": "nw-004",
@@ -721,7 +771,8 @@
         "D. 需要重定向"
       ],
       "answer": "C",
-      "explanation": "404 Not Found 资源不存在。200 成功，301/302 重定向，500 服务器错误。"
+      "explanation": "404 Not Found 资源不存在。200 成功，301/302 重定向，500 服务器错误。",
+      "concept": "这题考 HTTP 状态码。200 成功，301/302 重定向，404 找不到资源，500 服务器内部错误。后端开发经常要认这些码。"
     },
     {
       "id": "nw-005",
@@ -735,7 +786,8 @@
         "D. UDP 传输"
       ],
       "answer": "B",
-      "explanation": "HTTPS = HTTP + TLS，加密传输防窃听篡改，需证书验证身份。握手更多，不是更快。"
+      "explanation": "HTTPS = HTTP + TLS，加密传输防窃听篡改，需证书验证身份。握手更多，不是更快。",
+      "concept": "这题考 HTTPS。HTTP + TLS 加密，防窃听和篡改。浏览器会验证证书。比 HTTP 多握手步骤，不是更快而是更安全。"
     },
     {
       "id": "nw-006",
@@ -749,7 +801,8 @@
         "D. URL 转 HTML"
       ],
       "answer": "B",
-      "explanation": "DNS（Domain Name System）将域名解析为 IP，如 www.example.com → 93.184.216.34。"
+      "explanation": "DNS（Domain Name System）将域名解析为 IP，如 www.example.com → 93.184.216.34。",
+      "concept": "这题考 DNS 域名解析。把人类可读的域名（如 baidu.com）翻译成 IP 地址，浏览器才能找到服务器。"
     },
     {
       "id": "nw-007",
@@ -763,7 +816,8 @@
         "D. GET 比 POST 更安全"
       ],
       "answer": "B",
-      "explanation": "规范上 GET 幂等、可缓存，参数在 URL；POST 提交实体。实际 POST 也可带 URL 参数，GET 技术上可有 body 但不推荐。"
+      "explanation": "规范上 GET 幂等、可缓存，参数在 URL；POST 提交实体。实际 POST 也可带 URL 参数，GET 技术上可有 body 但不推荐。",
+      "concept": "这题考 GET 和 POST 语义区别。GET 幂等、参数在 URL、用于查询；POST 提交数据、可有 body。实际开发中 POST 也常用于查询，但面试按规范答。"
     },
     {
       "id": "nw-008",
@@ -777,7 +831,8 @@
         "D. Session 不能设置过期时间"
       ],
       "answer": "B",
-      "explanation": "Session 数据在服务器，通过 SessionId（常放 Cookie）关联客户端。Cookie 是客户端存储的小文本。"
+      "explanation": "Session 数据在服务器，通过 SessionId（常放 Cookie）关联客户端。Cookie 是客户端存储的小文本。",
+      "concept": "这题考 Cookie 和 Session。Session 数据在服务器，Cookie 是浏览器存的小文本，常用 Cookie 带 SessionId 关联用户。"
     },
     {
       "id": "nw-009",
@@ -791,7 +846,8 @@
         "D. 路由选择"
       ],
       "answer": "B",
-      "explanation": "滑动窗口实现流量控制，限制发送方速率。拥塞控制用拥塞窗口等算法。"
+      "explanation": "滑动窗口实现流量控制，限制发送方速率。拥塞控制用拥塞窗口等算法。",
+      "concept": "这题考 TCP 滑动窗口。接收方告诉发送方「我还能收多少」，控制发送速度，叫流量控制。和拥塞控制（网络堵了减速）不同。"
     },
     {
       "id": "nw-010",
@@ -805,7 +861,8 @@
         "D. DELETE"
       ],
       "answer": "C",
-      "explanation": "REST 惯例：GET 查询，POST 创建，PUT/PATCH 更新，DELETE 删除。PUT 全量更新，PATCH 部分更新。"
+      "explanation": "REST 惯例：GET 查询，POST 创建，PUT/PATCH 更新，DELETE 删除。PUT 全量更新，PATCH 部分更新。",
+      "concept": "这题考 RESTful HTTP 方法。GET 查、POST 增、PUT/PATCH 改、DELETE 删。PUT 全量更新，PATCH 部分更新。"
     },
     {
       "id": "nw-011",
@@ -822,7 +879,8 @@
         "A",
         "C"
       ],
-      "explanation": "HTTP、FTP、SMTP、DNS 都是应用层。TCP/UDP 传输层，IP 网络层。"
+      "explanation": "HTTP、FTP、SMTP、DNS 都是应用层。TCP/UDP 传输层，IP 网络层。",
+      "concept": "这题考协议分层。应用层：HTTP、FTP、DNS；传输层：TCP、UDP；网络层：IP。记「HTTP 是应用层」就够应付很多题。"
     },
     {
       "id": "nw-012",
@@ -836,7 +894,8 @@
         "D. 只能传文本"
       ],
       "answer": "B",
-      "explanation": "WebSocket 握手后保持连接，双向实时通信，适合聊天、推送。HTTP 长轮询仍是一次请求一次响应模式。"
+      "explanation": "WebSocket 握手后保持连接，双向实时通信，适合聊天、推送。HTTP 长轮询仍是一次请求一次响应模式。",
+      "concept": "这题考 WebSocket。握手后保持长连接，双向实时通信。比 HTTP 轮询更省资源，聊天、股票推送常用。"
     },
     {
       "id": "nw-013",
@@ -850,7 +909,8 @@
         "D. 默认网关"
       ],
       "answer": "B",
-      "explanation": "127.0.0.1 是本地回环（localhost），访问本机服务。0.0.0.0 表示所有网卡监听。"
+      "explanation": "127.0.0.1 是本地回环（localhost），访问本机服务。0.0.0.0 表示所有网卡监听。",
+      "concept": "这题考特殊 IP。127.0.0.1 是本机回环地址（localhost），访问自己机器上的服务。0.0.0.0 表示监听所有网卡。"
     },
     {
       "id": "nw-014",
@@ -864,7 +924,8 @@
         "D. 无需 TCP"
       ],
       "answer": "B",
-      "explanation": "HTTP/1.1 默认持久连接，一个 TCP 可发多个请求。HTTP/1.0 默认短连接需 Connection: keep-alive 开启。"
+      "explanation": "HTTP/1.1 默认持久连接，一个 TCP 可发多个请求。HTTP/1.0 默认短连接需 Connection: keep-alive 开启。",
+      "concept": "这题考 HTTP 持久连接。HTTP/1.1 默认 Keep-Alive，一个 TCP 连接可以发多个请求，减少握手开销。"
     },
     {
       "id": "nw-015",
@@ -878,7 +939,8 @@
         "D. TCP 连接超时"
       ],
       "answer": "B",
-      "explanation": "浏览器同源策略：协议、域名、端口任一不同即为跨域。需服务端 CORS 头或代理解决。"
+      "explanation": "浏览器同源策略：协议、域名、端口任一不同即为跨域。需服务端 CORS 头或代理解决。",
+      "concept": "这题考跨域 CORS。浏览器安全策略：协议、域名、端口任一不同就是跨域，前端 AJAX 会被拦。后端加 Access-Control-Allow-Origin 解决。"
     },
     {
       "id": "nw-016",
@@ -892,7 +954,8 @@
         "D. 选响应最快的"
       ],
       "answer": "B",
-      "explanation": "轮询按顺序分配。其他策略：加权轮询、最少连接、IP 哈希、一致性哈希等。"
+      "explanation": "轮询按顺序分配。其他策略：加权轮询、最少连接、IP 哈希、一致性哈希等。",
+      "concept": "这题考负载均衡策略。轮询就是按顺序依次把请求分给每台服务器，最简单常用的策略。"
     },
     {
       "id": "nw-017",
@@ -906,7 +969,8 @@
         "D. 文件压缩"
       ],
       "answer": "B",
-      "explanation": "JWT 将用户信息签名编码在 token 中，服务端无状态验证，常用于前后端分离认证。注意防 XSS 窃取和过期刷新。"
+      "explanation": "JWT 将用户信息签名编码在 token 中，服务端无状态验证，常用于前后端分离认证。注意防 XSS 窃取和过期刷新。",
+      "concept": "这题考 JWT。把用户信息签名后放在 token 里，服务端不用存 Session 就能验证身份。前后端分离项目里非常常见。"
     },
     {
       "id": "nw-018",
@@ -920,7 +984,8 @@
         "D. HTTP"
       ],
       "answer": "C",
-      "explanation": "ping 使用 ICMP Echo Request/Reply 检测网络连通性和延迟。"
+      "explanation": "ping 使用 ICMP Echo Request/Reply 检测网络连通性和延迟。",
+      "concept": "这题考 ping 命令。用 ICMP 协议发 Echo 请求，测网络通不通和延迟多少毫秒。"
     },
     {
       "id": "nw-019",
@@ -934,7 +999,8 @@
         "D. SSL 终结"
       ],
       "answer": "C",
-      "explanation": "Nginx 反向代理做负载均衡、隐藏后端、HTTPS 卸载、静态资源等，不替代数据库存储。"
+      "explanation": "Nginx 反向代理做负载均衡、隐藏后端、HTTPS 卸载、静态资源等，不替代数据库存储。",
+      "concept": "这题考反向代理 Nginx 的作用。挡在前面做负载均衡、HTTPS 卸载、隐藏后端 IP。它不存业务数据，数据库还是 MySQL。"
     },
     {
       "id": "db-001",
@@ -948,7 +1014,8 @@
         "D. 两者完全相同"
       ],
       "answer": "B",
-      "explanation": "InnoDB 支持事务（ACID）、外键、行级锁、崩溃恢复，MySQL 5.5+ 默认引擎。MyISAM 表级锁、不支持事务。"
+      "explanation": "InnoDB 支持事务（ACID）、外键、行级锁、崩溃恢复，MySQL 5.5+ 默认引擎。MyISAM 表级锁、不支持事务。",
+      "concept": "这题考 MySQL 两种引擎。InnoDB 支持事务、外键、行锁，是现在默认；MyISAM 不支持事务，表锁，老项目可能见到。"
     },
     {
       "id": "db-002",
@@ -962,7 +1029,8 @@
         "D. 不支持等值查询"
       ],
       "answer": "B",
-      "explanation": "B+ 树数据只在叶子节点，叶子间链表连接，范围扫描友好。InnoDB 聚簇索引叶子存整行数据。"
+      "explanation": "B+ 树数据只在叶子节点，叶子间链表连接，范围扫描友好。InnoDB 聚簇索引叶子存整行数据。",
+      "concept": "这题考 B+ 树索引。MySQL InnoDB 用 B+ 树：数据只在叶子节点，叶子之间链表连接，范围查询（BETWEEN）很快。"
     },
     {
       "id": "db-003",
@@ -976,7 +1044,8 @@
         "D. 最左前缀匹配"
       ],
       "answer": "A",
-      "explanation": "对索引列运算/函数、隐式类型转换、like '%abc' 前缀模糊、违反最左前缀等可能导致索引失效，需 EXPLAIN 分析。"
+      "explanation": "对索引列运算/函数、隐式类型转换、like '%abc' 前缀模糊、违反最左前缀等可能导致索引失效，需 EXPLAIN 分析。",
+      "concept": "这题考索引失效场景。对索引列套函数（如 YEAR(时间)）、like '%abc' 前缀模糊、隐式类型转换都会导致索引用不了，变全表扫描。"
     },
     {
       "id": "db-004",
@@ -990,7 +1059,8 @@
         "D. 持久性"
       ],
       "answer": "C",
-      "explanation": "A 原子性、C 一致性、I 隔离性、D 持久性。隔离性通过锁和 MVCC 控制并发事务相互影响。"
+      "explanation": "A 原子性、C 一致性、I 隔离性、D 持久性。隔离性通过锁和 MVCC 控制并发事务相互影响。",
+      "concept": "这题考事务 ACID。A 原子性（全成功或全回滚）、C 一致性、I 隔离性（事务互不干扰）、D 持久性（提交后不丢）。"
     },
     {
       "id": "db-005",
@@ -1004,7 +1074,8 @@
         "D. SERIALIZABLE"
       ],
       "answer": "C",
-      "explanation": "MySQL InnoDB 默认 REPEATABLE READ（可重复读），通过 MVCC + 间隙锁减少幻读。"
+      "explanation": "MySQL InnoDB 默认 REPEATABLE READ（可重复读），通过 MVCC + 间隙锁减少幻读。",
+      "concept": "这题考 MySQL 默认隔离级别。InnoDB 默认 REPEATABLE READ（可重复读），同一次事务里多次读同一行结果一样。"
     },
     {
       "id": "db-006",
@@ -1018,7 +1089,8 @@
         "D. 没有区别"
       ],
       "answer": "A",
-      "explanation": "InnoDB 主键是聚簇索引，叶子节点存完整行。二级索引叶子存主键值，需回表查询。"
+      "explanation": "InnoDB 主键是聚簇索引，叶子节点存完整行。二级索引叶子存主键值，需回表查询。",
+      "concept": "这题考聚簇索引。InnoDB 主键索引的叶子节点直接存整行数据，一张表只有一个聚簇索引。其他索引叶子存主键值，需要回表。"
     },
     {
       "id": "db-007",
@@ -1032,7 +1104,8 @@
         "D. 换数据库"
       ],
       "answer": "B",
-      "explanation": "用 EXPLAIN 看 type、key、rows、Extra 等，定位全表扫描、索引失效原因，再针对性加索引或改 SQL。"
+      "explanation": "用 EXPLAIN 看 type、key、rows、Extra 等，定位全表扫描、索引失效原因，再针对性加索引或改 SQL。",
+      "concept": "这题考慢 SQL 优化第一步。先 EXPLAIN 看执行计划：有没有走索引、扫描多少行。别一上来就加内存或删索引。"
     },
     {
       "id": "db-008",
@@ -1050,7 +1123,8 @@
         "B",
         "D"
       ],
-      "explanation": "COUNT、SUM、AVG、MAX、MIN 是聚合函数。WHERE 是条件过滤，常与 GROUP BY 配合 HAVING 过滤分组。"
+      "explanation": "COUNT、SUM、AVG、MAX、MIN 是聚合函数。WHERE 是条件过滤，常与 GROUP BY 配合 HAVING 过滤分组。",
+      "concept": "这题考 SQL 聚合函数。COUNT 计数、SUM 求和、AVG 平均。WHERE 是过滤条件，不是聚合函数；分组后用 HAVING 过滤。"
     },
     {
       "id": "db-009",
@@ -1064,7 +1138,8 @@
         "D. redo log 只在 MyISAM 中使用"
       ],
       "answer": "A",
-      "explanation": "redo log InnoDB 引擎层物理日志，保证持久性；binlog Server 层逻辑日志，用于复制和点对点恢复。两阶段提交保证一致。"
+      "explanation": "redo log InnoDB 引擎层物理日志，保证持久性；binlog Server 层逻辑日志，用于复制和点对点恢复。两阶段提交保证一致。",
+      "concept": "这题考 redo log 和 binlog。redo log 是 InnoDB 的物理日志，保证崩溃恢复；binlog 是 Server 层逻辑日志，用于主从复制。"
     },
     {
       "id": "db-010",
@@ -1078,7 +1153,8 @@
         "D. LEFT JOIN 更快"
       ],
       "answer": "A",
-      "explanation": "INNER JOIN 只返回两表匹配行；LEFT JOIN 保留左表所有行。RIGHT JOIN 保留右表。"
+      "explanation": "INNER JOIN 只返回两表匹配行；LEFT JOIN 保留左表所有行。RIGHT JOIN 保留右表。",
+      "concept": "这题考 JOIN 类型。INNER JOIN 只返回两表都匹配的行；LEFT JOIN 保留左表全部，右表没匹配填 NULL。"
     },
     {
       "id": "db-011",
@@ -1092,7 +1168,8 @@
         "D. 不需要主键"
       ],
       "answer": "C",
-      "explanation": "1NF 原子性；2NF 消除部分依赖；3NF 消除传递依赖。实际设计常适度反范式化换性能。"
+      "explanation": "1NF 原子性；2NF 消除部分依赖；3NF 消除传递依赖。实际设计常适度反范式化换性能。",
+      "concept": "这题考数据库范式。3NF 要求消除传递依赖：非主键字段不能只依赖主键的一部分间接依赖。实际项目会适度反范式换性能。"
     },
     {
       "id": "db-012",
@@ -1106,7 +1183,8 @@
         "D. 事务隔离级别太高"
       ],
       "answer": "B",
-      "explanation": "大 offset 需扫描大量行再丢弃。优化：延迟关联、记录上次最大 id、搜索引擎等。"
+      "explanation": "大 offset 需扫描大量行再丢弃。优化：延迟关联、记录上次最大 id、搜索引擎等。",
+      "concept": "这题考深分页慢的原因。LIMIT 100000,10 要先扫描 100010 行再丢掉前 100000 行。优化：用 id > 上次最大id 代替大 offset。"
     },
     {
       "id": "lx-001",
@@ -1120,7 +1198,8 @@
         "D. pwd"
       ],
       "answer": "B",
-      "explanation": "ls -a 显示所有含隐藏文件（. 开头）；ls -l 长格式；pwd 显示当前路径。"
+      "explanation": "ls -a 显示所有含隐藏文件（. 开头）；ls -l 长格式；pwd 显示当前路径。",
+      "concept": "这题考 Linux 基本命令。ls 列文件；-a 显示隐藏文件（以 . 开头）；-l 显示详细信息。pwd 是显示当前路径。"
     },
     {
       "id": "lx-002",
@@ -1134,7 +1213,8 @@
         "D. kill"
       ],
       "answer": "B",
-      "explanation": "grep 搜索文本内容。find 按文件名/属性查找。如 grep -r \"error\" /var/log。"
+      "explanation": "grep 搜索文本内容。find 按文件名/属性查找。如 grep -r \"error\" /var/log。",
+      "concept": "这题考文本搜索。grep 在文件内容里搜字符串；find 按文件名或属性找文件。查日志常用 grep error xxx.log。"
     },
     {
       "id": "lx-003",
@@ -1148,7 +1228,8 @@
         "D. chgrp 755 file"
       ],
       "answer": "A",
-      "explanation": "chmod 改权限，755 = rwxr-xr-x。chown 改所有者，chgrp 改组。"
+      "explanation": "chmod 改权限，755 = rwxr-xr-x。chown 改所有者，chgrp 改组。",
+      "concept": "这题考文件权限 chmod。三位数字对应所有者/组/其他人：7=rwx，5=r-x，4=r--。755 就是所有者全权限，其他人读和执行。"
     },
     {
       "id": "lx-004",
@@ -1162,7 +1243,8 @@
         "D. top"
       ],
       "answer": "A",
-      "explanation": "netstat/ss 查看端口监听和进程。如 ss -tlnp | grep 8080。top 看 CPU/内存。"
+      "explanation": "netstat/ss 查看端口监听和进程。如 ss -tlnp | grep 8080。top 看 CPU/内存。",
+      "concept": "这题考查端口占用。netstat 或 ss 加 -tlnp 可以看哪个进程监听了哪个端口，部署时查 8080 是否被占常用。"
     },
     {
       "id": "lx-005",
@@ -1176,7 +1258,8 @@
         "D. chmod java"
       ],
       "answer": "B",
-      "explanation": "nohup 忽略挂断信号，& 后台运行，> 重定向标准输出，2>&1 将错误也重定向到同一文件。"
+      "explanation": "nohup 忽略挂断信号，& 后台运行，> 重定向标准输出，2>&1 将错误也重定向到同一文件。",
+      "concept": "这题考后台运行 Java。nohup 防止终端关闭后进程被杀；> 重定向输出；2>&1 把错误也写入同一文件；& 放后台。"
     },
     {
       "id": "lx-006",
@@ -1190,7 +1273,8 @@
         "D. Esc"
       ],
       "answer": "B",
-      "explanation": ":wq 保存退出；:q 未修改时退出；:q! 强制不保存退出。先按 Esc 到命令模式。"
+      "explanation": ":wq 保存退出；:q 未修改时退出；:q! 强制不保存退出。先按 Esc 到命令模式。",
+      "concept": "这题考 vim 基本操作。先按 Esc 到命令模式，:wq 保存退出，:q! 不保存强制退出。服务器改配置经常要用。"
     },
     {
       "id": "lx-007",
@@ -1208,7 +1292,8 @@
         "B",
         "D"
       ],
-      "explanation": "ps 查看进程，kill 发送信号终止，top 动态监控。cat 查看文件内容。"
+      "explanation": "ps 查看进程，kill 发送信号终止，top 动态监控。cat 查看文件内容。",
+      "concept": "这题考进程管理命令。ps 看进程列表，top 动态监控 CPU/内存，kill 发信号终止进程。cat 只是看文件内容。"
     },
     {
       "id": "lx-008",
@@ -1222,7 +1307,8 @@
         "D. 没有区别"
       ],
       "answer": "A",
-      "explanation": "软链接类似快捷方式，存路径，可跨文件系统，原文件删则失效。硬链接同一 inode，不能跨分区，原文件删链接仍有效。"
+      "explanation": "软链接类似快捷方式，存路径，可跨文件系统，原文件删则失效。硬链接同一 inode，不能跨分区，原文件删链接仍有效。",
+      "concept": "这题考软链接和硬链接。软链接像 Windows 快捷方式，存路径，可跨分区；硬链接共享同一 inode，原文件删了链接还在，但不能跨分区。"
     }
   ]
 }
